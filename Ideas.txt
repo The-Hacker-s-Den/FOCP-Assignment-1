@@ -4,3 +4,4 @@ Flood
 Fire
 Earthquake
 Volcano
+Droughts
