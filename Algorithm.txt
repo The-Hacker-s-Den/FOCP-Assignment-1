@@ -1,0 +1,9 @@
+Algorithm:
+1. Trucks = 5, Supply_packs = 120
+2. Output" Welcome to Relief Supply Distribution System. Would you like to update the inventory items available? (Default: 5 Trucks, 120 Supply Packs)?"
+3. input inventory_update y/n
+4. if inventory_update = y or Y
+	Input trucks , supply_packs
+5. Output:"Is there any new Natural Disaster (y/n)?"
+6. input new_disaster y/n
+7. 
