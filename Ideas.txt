@@ -5,3 +5,5 @@ Fire
 Earthquake
 Volcano
 Droughts
+Heatwaves
+Coldwaves
