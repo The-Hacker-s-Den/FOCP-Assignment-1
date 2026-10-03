@@ -1,8 +1,9 @@
 #include<iostream>
 using namespace std;
 
-int trucks = 5, supply_packs = 120, disaster = 0, damage_level = 0, families_affected = 0;
+int trucks = 5, supply_packs = 120, disaster = 0, families_affected = 0;
 char update_inventory, access_route, aftershocks, medical_need, previous_aid_received;
+string damage_level;
 
 int welcome() {
 	cout << "\nHi! Welcome to the Relief Supply Distribution System!" << endl;
@@ -44,10 +45,16 @@ int earthquake() {
 	cout << "Damage Level\t\t: ";
 	cin >> damage_level;
 
-	cout << "Families Affected\t\t: ";
+	
+	cout << "Families Affected (10-200)\t\t: ";
 	cin >> families_affected;
+	while (families_affected < 10 || families_affected > 200) {
+		cout << "\nInvalid input. Please enter a value between 10 and 200." << endl;
+		cout << "Families Affected\t\t: ";
+		cin >> families_affected;
+	}
 
-	cout << "Access Route Availability (y/n)\t\t: ";
+	cout << "Access Route Availability (y/n)\t: ";
 	cin >> access_route;
 
 	cout << "Aftershocks (y/n)\t\t\t: ";
