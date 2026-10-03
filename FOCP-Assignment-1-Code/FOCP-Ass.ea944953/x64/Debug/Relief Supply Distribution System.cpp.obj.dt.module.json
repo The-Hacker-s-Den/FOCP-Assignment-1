@@ -1,0 +1,14 @@
+{
+    "version": 1,
+    "revision": 0,
+    "rules": [
+        {
+            "primary-output": "FOCP-Ass.ea944953\\x64\\Debug\\Relief Supply Distribution System.obj",
+            "outputs": [
+                "FOCP-Ass.ea944953\\x64\\Debug\\Relief Supply Distribution System.cpp.obj.dt.module.json",
+                "FOCP-Ass.ea944953\\x64\\Debug\\Relief Supply Distribution System.cpp.obj.dt.d.json"
+            ],
+            "requires": []
+        }
+    ]
+}
