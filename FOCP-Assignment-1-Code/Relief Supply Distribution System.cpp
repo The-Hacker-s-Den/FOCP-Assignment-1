@@ -154,6 +154,10 @@ int earthquake() {
 	needscore = (0.5 * people) + (0.4 * impact) + (0.1 * complexity);
 	if (previous_aid_received == "yes" || previous_aid_received == "Yes")
 		needscore = needscore - 10;
+	if (needscore > 100)
+		needscore = 100;
+	if (needscore < 0)
+		needscore = 0;
 	cout << fixed << setprecision(1);
 	cout << "\n The Calculated Need Score: " << needscore;
 
