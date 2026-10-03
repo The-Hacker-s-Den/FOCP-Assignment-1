@@ -1,11 +1,11 @@
 #include<iostream>
 using namespace std;
 
-int trucks = 5, supply_packs = 120, disaster = 0;
-char update_inventory;
+int trucks = 5, supply_packs = 120, disaster = 0, damage_level = 0, families_affected = 0;
+char update_inventory, access_route, aftershocks, medical_need, previous_aid_received;
 
 int welcome() {
-	cout << "\nWelcome to the Relief Supply Distribution System!" << endl;
+	cout << "\nHi! Welcome to the Relief Supply Distribution System!" << endl;
 	return 0;
 }
 
@@ -28,13 +28,38 @@ int inventory() {
 int disasters() {
 	cout << "\n\nBelow is a list of available disasters:" << endl;
 	cout << "1. Earthquake" << endl;
+	cout << "\nPlease select a disaster by entering the corresponding number: ";
 	cin >> disaster;
 	return 0;
 }
 int earthquake() {
-	cout << "\n\nEarthquake Disaster Selected!" << endl;
-	cout << "\nPlease enter the deatils of the earthquake disaster:" << endl;
-	cout << "\nDisaster:\tDamage Level:\tFamilies Affected:\tAccess Route:\tAftershocks:\tMedical Need:\tPrevoius Aid Received:" << endl;
+	cout << "\nEarthquake Disaster Selected!" << endl;
+	cout << "\nPlease enter the details of the earthquake disaster:" << endl;
+
+	cout << "Disaster:" << endl;
+	if (disaster == 1) {
+		cout << "\nType: Earthquake" << endl;
+	}
+
+	cout << "Damage Level\t\t: ";
+	cin >> damage_level;
+
+	cout << "Families Affected\t\t: ";
+	cin >> families_affected;
+
+	cout << "Access Route Availability (y/n)\t\t: ";
+	cin >> access_route;
+
+	cout << "Aftershocks (y/n)\t\t\t: ";
+	cin >> aftershocks;
+
+	cout << "Medical Need\t\t\t: ";
+	cin >> medical_need;
+
+	cout << "Previous Aid Received (y/n)\t: ";
+	cin >> previous_aid_received;
+
+	cout << endl;
 	return 0;
 }
 
@@ -45,5 +70,6 @@ int main() {
 	if (disaster == 1) {
 		earthquake();
 	}
+	
 	return 0;
 }
