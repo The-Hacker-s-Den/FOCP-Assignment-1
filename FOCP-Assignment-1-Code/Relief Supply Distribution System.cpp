@@ -31,10 +31,19 @@ int disasters() {
 	cin >> disaster;
 	return 0;
 }
+int earthquake() {
+	cout << "\n\nEarthquake Disaster Selected!" << endl;
+	cout << "\nPlease enter the deatils of the earthquake disaster:" << endl;
+	cout << "\nDisaster:\tDamage Level:\tFamilies Affected:\tAccess Route:\tAftershocks:\tMedical Need:\tPrevoius Aid Received:" << endl;
+	return 0;
+}
 
 int main() {
 	welcome();
 	inventory();
 	disasters();
+	if (disaster == 1) {
+		earthquake();
+	}
 	return 0;
 }
