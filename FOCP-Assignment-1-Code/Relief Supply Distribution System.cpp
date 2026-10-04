@@ -122,23 +122,23 @@ int earthquake() {
 			cin >> previous_aid_received;
 		}
 
-		int people = 0;
+		int people_points = 0;
 		if (families_affected >= 10 && families_affected <= 50)
-			people = people + 5;
+			people_points = people_points + 5;
 		else if (families_affected >= 51 && families_affected <= 100)
-			people = people + 10;
+			people_points = people_points + 10;
 		else if (families_affected >= 101 && families_affected <= 150)
-			people = people + 15;
+			people_points = people_points + 15;
 		else if (families_affected >= 151 && families_affected <= 200)
-			people = people + 20;
+			people_points = people_points + 20;
 		if (medical_need == "yes" || medical_need == "Yes" || medical_need == "y" || medical_need == "Y")
-			people = people + 25;
+			people_points = people_points + 25;
 		if (trapped_ppl == "yes" || trapped_ppl == "Yes" || trapped_ppl == "y" || trapped_ppl == "Y")
-			people = people + 30;
+			people_points = people_points + 30;
 		if (vulnerable_grps == "yes" || vulnerable_grps == "Yes" || vulnerable_grps == "y" || vulnerable_grps == "Y")
-			people = people + 15;
+			people_points = people_points + 15;
 		if (local_clinic == "no" || local_clinic == "No" || local_clinic == "n" || local_clinic == "N")
-			people = people + 10;
+			people_points = people_points + 10;
 
 		int impact = 0;
 		if (damage_level == "High" || damage_level == "high" || damage_level == "H" || damage_level == "h")
@@ -156,7 +156,7 @@ int earthquake() {
 
 
 		float needscore;
-		needscore = (0.5 * people) + (0.4 * impact) + (0.1 * complexity);
+		needscore = (0.5 * people_points) + (0.4 * impact) + (0.1 * complexity);
 		if (previous_aid_received == "yes" || previous_aid_received == "Yes" || previous_aid_received == "y" || previous_aid_received == "Y")
 			needscore = needscore - 10;
 		if (needscore > 100)
