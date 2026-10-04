@@ -13,7 +13,7 @@ int welcome() {
 }
 
 int inventory() {
-	cout << "\n\nWe currently have " << supply_packs << " supply packs and " << trucks << " trucks available for distribution." << endl;
+	cout << "\nWe currently have " << supply_packs << " supply packs and " << trucks << " trucks available for distribution." << endl;
 	cout << "Would you like to update the inventory? (y/n): ";
 	cin >> update_inventory;
 	if (update_inventory == 'y' || update_inventory == 'Y') {
