@@ -91,7 +91,6 @@ No license has currently been specified for this repository. Unless a license is
 
 ## Authors
 
-- **The Hacker's Den** — [GitHub](https://github.com/The-Hacker-s-Den)
 - **Shaheer Mirza** — [GitHub](https://github.com/Shaheer-Mirza)
 - **rameen-debug** — [GitHub](https://github.com/rameen-debug)
 - **Hania1573** — [GitHub](https://github.com/Hania1573)
