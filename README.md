@@ -47,7 +47,7 @@ cd FOCP-Assignment-1
 
 ### Run the Assignment
 
-Use the appropriate command for the language and project structure used in the repository. For example, if the project contains a script or compiled program, run it from the relevant source directory according to your course instructions.
+Use the appropriate command for the language and project structure used in the repository. For example, if the project contains a script or compiled program, run it from the relevant source directory or development environment.
 
 ## Usage
 
@@ -87,9 +87,17 @@ All submitted work should comply with the relevant course policies and academic-
 
 ## License
 
-No license has currently been specified for this repository. Unless a license is added, the contents should be considered available only for the purposes permitted by the repository owner and applicable course requirements.
+No license has currently been specified for this repository. Unless a license is added, the contents should be considered available only for the purposes permitted by the repository owner and applicable law.
 
-## Author
+## Authors
 
-**The Hacker's Den**  
-GitHub: [The-Hacker-s-Den](https://github.com/The-Hacker-s-Den)
+- **The Hacker's Den** — [GitHub](https://github.com/The-Hacker-s-Den)
+- **Shaheer Mirza** — [GitHub](https://github.com/Shaheer-Mirza)
+- **rameen-debug** — [GitHub](https://github.com/rameen-debug)
+- **Hania1573** — [GitHub](https://github.com/Hania1573)
+
+## Contributors
+
+- [Shaheer-Mirza](https://github.com/Shaheer-Mirza)
+- [rameen-debug](https://github.com/rameen-debug)
+- [Hania1573](https://github.com/Hania1573)
