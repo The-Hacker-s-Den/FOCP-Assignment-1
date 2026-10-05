@@ -68,7 +68,7 @@ int earthquake() {
 		cout << "Access Route Availability (yes/no)\t\t: ";
 		cin >> access_route;
 		while (access_route != "yes" && access_route != "Yes" && access_route != "no" && access_route != "No" && access_route != "y" && access_route != "n" && access_route != "Y" && access_route != "N") {
-			cout << "Invalid input. Please enter yes or no.";
+			cout << "Invalid input. Please enter yes or no." << endl;
 			cout << "Access Route Availability:\t ";
 			cin >> access_route;
 		}
@@ -76,7 +76,7 @@ int earthquake() {
 		cout << "Aftershock Warning (yes/no)\t\t\t: ";
 		cin >> aftershocks;
 		while (aftershocks != "yes" && aftershocks != "Yes" && aftershocks != "No" && aftershocks != "no" && aftershocks != "y" && aftershocks != "n" && aftershocks != "Y" && aftershocks != "N") {
-			cout << "Invalid input. Please enter yes or no.";
+			cout << "Invalid input. Please enter yes or no." << endl;
 			cout << "Aftershock Warning\t\t\t: ";
 			cin >> aftershocks;
 		}
@@ -84,7 +84,7 @@ int earthquake() {
 		cout << "Medical Need (yes/no)\t\t\t\t: ";
 		cin >> medical_need;
 		while (medical_need != "yes" && medical_need != "Yes" && medical_need != "No" && medical_need != "no" && medical_need != "y" && medical_need != "n" && medical_need != "Y" && medical_need != "N") {
-			cout << "Invalid input. Please enter yes or no.";
+			cout << "Invalid input. Please enter yes or no." << endl;
 			cout << "Medical Need\t\t\t: ";
 			cin >> medical_need;
 		}
@@ -92,7 +92,7 @@ int earthquake() {
 		cout << "Trapped People (yes/no)\t\t\t\t: ";
 		cin >> trapped_ppl;
 		while (trapped_ppl != "yes" && trapped_ppl != "Yes" && trapped_ppl != "No" && trapped_ppl != "no" && trapped_ppl != "y" && trapped_ppl != "n" && trapped_ppl != "Y" && trapped_ppl != "N") {
-			cout << "Invalid input. Please enter yes or no.";
+			cout << "Invalid input. Please enter yes or no." << endl;
 			cout << "Trapped People\t\t\t: ";
 			cin >> trapped_ppl;
 		}
@@ -101,7 +101,7 @@ int earthquake() {
 		cout << "Vulnerable Groups Present (yes/no)\t\t: ";
 		cin >> vulnerable_grps;
 		while (vulnerable_grps != "yes" && vulnerable_grps != "Yes" && vulnerable_grps != "No" && vulnerable_grps != "no" && vulnerable_grps != "y" && vulnerable_grps != "n" && vulnerable_grps != "Y" && vulnerable_grps != "N") {
-			cout << "Invalid input. Please enter yes or no.";
+			cout << "Invalid input. Please enter yes or no." << endl;
 			cout << "Vulnerable Groups Present\t\t\t: ";
 			cin >> vulnerable_grps;
 		}
@@ -109,7 +109,7 @@ int earthquake() {
 		cout << "Local Clinic Functional (yes/no)\t\t: ";
 		cin >> local_clinic;
 		while (local_clinic != "yes" && local_clinic != "Yes" && local_clinic != "No" && local_clinic != "no" && local_clinic != "y" && local_clinic != "n" && local_clinic != "Y" && local_clinic != "N") {
-			cout << "Invalid input. Please enter yes or no.";
+			cout << "Invalid input. Please enter yes or no." << endl;
 			cout << "Local Clinic Functional\t\t\t: ";
 			cin >> local_clinic;
 		}
@@ -117,7 +117,7 @@ int earthquake() {
 		cout << "Previous Aid Received (yes/no)\t\t\t: ";
 		cin >> previous_aid_received;
 		while (previous_aid_received != "yes" && previous_aid_received != "Yes" && previous_aid_received != "No" && previous_aid_received != "no" && previous_aid_received != "y" && previous_aid_received != "n" && previous_aid_received != "Y" && previous_aid_received != "N") {
-			cout << "Invalid input. Please enter yes or no.";
+			cout << "Invalid input. Please enter yes or no." << endl;
 			cout << "Previous Aid Received\t\t\t: ";
 			cin >> previous_aid_received;
 		}
