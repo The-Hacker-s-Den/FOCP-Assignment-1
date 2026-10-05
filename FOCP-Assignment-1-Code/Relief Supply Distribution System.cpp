@@ -178,11 +178,11 @@ int earthquake() {
 		else
 		{
 			if (needscore >= 20 && needscore < 40)
-				level = 3; //emergency
+				level = 3; //emergency first aid kit
 			else if (needscore >= 40 && needscore < 65)
-				level = 2; //standard
+				level = 2; //standard aid
 			else if (needscore >= 65)
-				level = 1; //full
+				level = 1; //full aid
 			bool sent = false;
 			while (!sent && level <= 3) {
 				int trucksneeded = 0, packsneeded = 0;
