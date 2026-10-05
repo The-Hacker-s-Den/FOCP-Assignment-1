@@ -1,5 +1,7 @@
 # FOCP Assignment 1
 
+> A collection of our work for the first assignment in the Fundamentals of Computer Programming course, including the source files and solutions completed for the project.
+
 This repository contains our work for **Assignment 1** in the Fundamentals of Computer Programming course.
 
 The project is kept here so that the assignment files, progress, and final work can be managed in one place.
