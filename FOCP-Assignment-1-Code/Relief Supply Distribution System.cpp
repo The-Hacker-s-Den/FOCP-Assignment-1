@@ -140,23 +140,23 @@ int earthquake() {
 		if (local_clinic == "no" || local_clinic == "No" || local_clinic == "n" || local_clinic == "N")
 			people_points = people_points + 10;
 
-		int impact = 0;
+		int impact_points = 0;
 		if (damage_level == "High" || damage_level == "high" || damage_level == "H" || damage_level == "h")
-			impact = impact + 60;
+			impact_points = impact_points + 60;
 		else if (damage_level == "medium" || damage_level == "Medium" || damage_level == "M" || damage_level == "m")
-			impact = impact + 36;
+			impact_points = impact_points + 36;
 		else if (damage_level == "Low" || damage_level == "low" || damage_level == "L" || damage_level == "l")
-			impact = impact + 12;
+			impact_points = impact_points + 12;
 		if (aftershocks == "yes" || aftershocks == "Yes" || aftershocks == "y" || aftershocks == "Y")
-			impact = impact + 40;
+			impact_points = impact_points + 40;
 
-		int complexity = 0;
+		int complexity_points = 0;
 		if (access_route == "no" || access_route == "No" || access_route == "n" || access_route == "N")
-			complexity = complexity + 100;
+			complexity_points = complexity_points + 100;
 
 
 		float needscore;
-		needscore = (0.5 * people_points) + (0.4 * impact) + (0.1 * complexity);
+		needscore = (0.5 * people_points) + (0.4 * impact_points) + (0.1 * complexity_points);
 		if (previous_aid_received == "yes" || previous_aid_received == "Yes" || previous_aid_received == "y" || previous_aid_received == "Y")
 			needscore = needscore - 10;
 		if (needscore > 100)
