@@ -49,7 +49,7 @@ int earthquake() {
 		cout << "\nEnter name of area\t\t\t\t: ";
 		cin >> area;
 
-		cout << "Infrastructure Damage Level (High, Medium, Low)\t: ";
+		cout << "Infrastructure Damage Level (\033[31mHigh,\033[33m Medium,\033[32m Low\033[0m) : ";
 		cin >> damage_level;
 		while (damage_level != "High" && damage_level != "Medium" && damage_level != "Low" && damage_level != "high" && damage_level != "low" && damage_level != "medium" && damage_level != "h" && damage_level != "m" && damage_level != "l" && damage_level != "H" && damage_level != "M" && damage_level != "L") {
 			cout << "Invalid input. Please enter High, Medium or Low." << endl;
@@ -65,7 +65,7 @@ int earthquake() {
 			cin >> families_affected;
 		}
 
-		cout << "Access Route Availability (yes/no)\t\t: ";
+		cout << "Access Route Availability (\033[32myes/\033[31mno\033[0m)\t\t: ";
 		cin >> access_route;
 		while (access_route != "yes" && access_route != "Yes" && access_route != "no" && access_route != "No" && access_route != "y" && access_route != "n" && access_route != "Y" && access_route != "N") {
 			cout << "Invalid input. Please enter yes or no." << endl;
@@ -73,7 +73,7 @@ int earthquake() {
 			cin >> access_route;
 		}
 
-		cout << "Aftershock Warning (yes/no)\t\t\t: ";
+		cout << "Aftershock Warning (\033[31myes/\033[32mno\033[0m)\t\t\t: ";
 		cin >> aftershocks;
 		while (aftershocks != "yes" && aftershocks != "Yes" && aftershocks != "No" && aftershocks != "no" && aftershocks != "y" && aftershocks != "n" && aftershocks != "Y" && aftershocks != "N") {
 			cout << "Invalid input. Please enter yes or no." << endl;
@@ -81,7 +81,7 @@ int earthquake() {
 			cin >> aftershocks;
 		}
 
-		cout << "Medical Need (yes/no)\t\t\t\t: ";
+		cout << "Medical Need (\033[31myes/\033[32mno\033[0m)\t\t\t\t: ";
 		cin >> medical_need;
 		while (medical_need != "yes" && medical_need != "Yes" && medical_need != "No" && medical_need != "no" && medical_need != "y" && medical_need != "n" && medical_need != "Y" && medical_need != "N") {
 			cout << "Invalid input. Please enter yes or no." << endl;
@@ -89,7 +89,7 @@ int earthquake() {
 			cin >> medical_need;
 		}
 
-		cout << "Trapped People (yes/no)\t\t\t\t: ";
+		cout << "Trapped People (\033[31myes/\033[32mno\033[0m)\t\t\t\t: ";
 		cin >> trapped_ppl;
 		while (trapped_ppl != "yes" && trapped_ppl != "Yes" && trapped_ppl != "No" && trapped_ppl != "no" && trapped_ppl != "y" && trapped_ppl != "n" && trapped_ppl != "Y" && trapped_ppl != "N") {
 			cout << "Invalid input. Please enter yes or no." << endl;
@@ -98,7 +98,7 @@ int earthquake() {
 		}
 
 
-		cout << "Vulnerable Groups Present (yes/no)\t\t: ";
+		cout << "Vulnerable Groups Present (\033[31myes/\033[32mno\033[0m)\t\t: ";
 		cin >> vulnerable_grps;
 		while (vulnerable_grps != "yes" && vulnerable_grps != "Yes" && vulnerable_grps != "No" && vulnerable_grps != "no" && vulnerable_grps != "y" && vulnerable_grps != "n" && vulnerable_grps != "Y" && vulnerable_grps != "N") {
 			cout << "Invalid input. Please enter yes or no." << endl;
@@ -106,7 +106,7 @@ int earthquake() {
 			cin >> vulnerable_grps;
 		}
 
-		cout << "Local Clinic Functional (yes/no)\t\t: ";
+		cout << "Local Clinic Functional (\033[32myes/\033[31mno\033[0m)\t\t: ";
 		cin >> local_clinic;
 		while (local_clinic != "yes" && local_clinic != "Yes" && local_clinic != "No" && local_clinic != "no" && local_clinic != "y" && local_clinic != "n" && local_clinic != "Y" && local_clinic != "N") {
 			cout << "Invalid input. Please enter yes or no." << endl;
@@ -164,6 +164,16 @@ int earthquake() {
 		if (needscore < 0)
 			needscore = 0;
 		cout << fixed << setprecision(1);
+		if (needscore < 20)
+			cout << "\033[32m"; //Green Text
+		else if (needscore >= 20 && needscore < 40)
+			cout << "\033[33m"; //Yellow Text
+		else if (needscore >= 40 && needscore < 65)
+			cout << "\033[38;5;208m"; //Orange Text
+		else if (needscore >= 65)
+			cout << "\033[31m"; //Bright Red Text
+
+
 		cout << "\nThe Calculated Need Score: " << needscore;
 
 		string action;
@@ -215,6 +225,8 @@ int earthquake() {
 				deferred++;
 			}
 		}
+
+		cout << "\033[0m"; // Reset color
 
 		cout << "\n\nRelief Given for "<<area<<": "<< action << endl;
 		cout << "\nTrucks Used: " << trucksused << " Supply Packs Used: " << packsused << endl;
