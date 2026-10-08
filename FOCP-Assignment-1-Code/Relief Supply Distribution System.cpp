@@ -44,9 +44,6 @@ int disasters() {
 	cout << "1. Earthquake" << endl;
 	cout << "\nPlease select a disaster by entering the corresponding number: ";
 	cin >> disaster;
-	if (disaster ==1) {
-		earth_quake = "y";
-	}
 	return 0;
 }
 
@@ -319,7 +316,7 @@ int main() {
 		}
 		cout << "\nIs there another disaster?(yes/no) ";
 		cin >> disas_start;
-	} while (disas_start != "no" && disas_start != "No");
+	} while (disas_start != "no" && disas_start != "No" && disas_start!="n"&&disas_start!="N");
 	cout << "\nThank you for using the Relief Supply Distribution System." << endl;
 	return 0;
 }
