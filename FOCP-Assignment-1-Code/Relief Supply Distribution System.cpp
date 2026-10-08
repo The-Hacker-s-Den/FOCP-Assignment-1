@@ -52,7 +52,7 @@ int earthquake() {
 		cout << "Infrastructure Damage Level (\033[31mHigh,\033[33m Medium,\033[32m Low\033[0m) : ";
 		cin >> damage_level;
 		while (damage_level != "High" && damage_level != "Medium" && damage_level != "Low" && damage_level != "high" && damage_level != "low" && damage_level != "medium" && damage_level != "h" && damage_level != "m" && damage_level != "l" && damage_level != "H" && damage_level != "M" && damage_level != "L") {
-			cout << "Invalid input. Please enter High, Medium or Low." << endl;
+			cout << "Invalid input. Please enter \033[31mHigh,\033[33m Medium\033[0m or\033[32m Low\033[0m." << endl;
 			cout << "Infrastructure Damage Level\t\t: ";
 			cin >> damage_level;
 		}
