@@ -3,14 +3,23 @@
 #include <iomanip>
 using namespace std;
 
+/* Global resources and state variables
+trucks/supply_packs = current availale stock
+disaster = which disaster has the user picked from the menu
+request_handled, deferred = running counters
+The string variables hold the yes/n and cateogircal answers collected from the user*/
+
 int trucks = 5, supply_packs = 120, disaster = 0, families_affected = 0, deferred = 0, request_handled = 0;
 string damage_level, access_route, aftershocks, area, medical_need, trapped_ppl, vulnerable_grps, local_clinic, previous_aid_received, selected_package, earth_quake, disas_start, update_inventory;
 
+//Prints the welcome banner when the program starts
 int welcome() {
 	cout << "\nHi! Welcome to the Relief Supply Distribution System!" << endl;
 	return 0;
 }
 
+/*Shows the current stock and lets the admin optionally overwrite / update the
+resources when the program restarts once over before processing any requests.*/
 int inventory() {
 	cout << "\nWe currently have " << supply_packs << " supply packs and " << trucks << " trucks available for distribution." << endl;
 	cout << "Would you like to update the inventory? (y/n): ";
@@ -27,6 +36,9 @@ int inventory() {
 	}
 	return 0;
 }
+
+/*Displays the disaster type menu and recors the user's choice
+Currently only "Earthquake" is implemented */
 int disasters() {
 	cout << "\n\nBelow is a list of available disasters:" << endl;
 	cout << "1. Earthquake" << endl;
@@ -37,6 +49,14 @@ int disasters() {
 	}
 	return 0;
 }
+
+/* Handles the full earthquake relief overflow:
+1. Collects request details
+2. Validates input
+3. Scores the request
+4. Decides an action
+5. Updates the stock
+6. Prints a summary*/
 int earthquake() {
 	cout << "\nEarthquake Disaster Selected!" << endl;
 	cout << "\nDisaster Type: Earthquake" << endl;
@@ -45,10 +65,15 @@ int earthquake() {
 
 	cout << "\nIs there an Earthquake Relief Request?(Yes/No)\t: ";
 	cin >> earth_quake;
+
+	//Main loop: keep processing the relief requests until the user says no
 	while (earth_quake == "y" || earth_quake == "Y" || earth_quake == "yes" || earth_quake == "Yes") {
+		
+		//Collect request details (each with input validation loops)
 		cout << "\nEnter name of area\t\t\t\t: ";
 		cin >> area;
 
+		//Damage level: must be High/Medium/Low (various cases/abbreviations accepted
 		cout << "Infrastructure Damage Level (\033[31mHigh,\033[33m Medium,\033[32m Low\033[0m) : ";
 		cin >> damage_level;
 		while (damage_level != "High" && damage_level != "Medium" && damage_level != "Low" && damage_level != "high" && damage_level != "low" && damage_level != "medium" && damage_level != "h" && damage_level != "m" && damage_level != "l" && damage_level != "H" && damage_level != "M" && damage_level != "L") {
@@ -57,6 +82,7 @@ int earthquake() {
 			cin >> damage_level;
 		}
 
+		//NUmber of families affect: must be within the allowed 10-200 range
 		cout << "Families Affected (10-200)\t\t\t: ";
 		cin >> families_affected;
 		while (families_affected < 10 || families_affected > 200) {
@@ -65,6 +91,8 @@ int earthquake() {
 			cin >> families_affected;
 		}
 
+
+		//Whether the access route into the area is open or damaged
 		cout << "Access Route Availability (\033[32myes/\033[31mno\033[0m)\t\t: ";
 		cin >> access_route;
 		while (access_route != "yes" && access_route != "Yes" && access_route != "no" && access_route != "No" && access_route != "y" && access_route != "n" && access_route != "Y" && access_route != "N") {
@@ -73,6 +101,8 @@ int earthquake() {
 			cin >> access_route;
 		}
 
+
+		//Whether an aftershock warning is in effect for the area
 		cout << "Aftershock Warning (\033[31myes/\033[32mno\033[0m)\t\t\t: ";
 		cin >> aftershocks;
 		while (aftershocks != "yes" && aftershocks != "Yes" && aftershocks != "No" && aftershocks != "no" && aftershocks != "y" && aftershocks != "n" && aftershocks != "Y" && aftershocks != "N") {
@@ -81,6 +111,7 @@ int earthquake() {
 			cin >> aftershocks;
 		}
 
+		//Whether the area has an urgent medical need
 		cout << "Medical Need (\033[31myes/\033[32mno\033[0m)\t\t\t\t: ";
 		cin >> medical_need;
 		while (medical_need != "yes" && medical_need != "Yes" && medical_need != "No" && medical_need != "no" && medical_need != "y" && medical_need != "n" && medical_need != "Y" && medical_need != "N") {
@@ -89,6 +120,7 @@ int earthquake() {
 			cin >> medical_need;
 		}
 
+		//Whether there are people trapped in the area/ the rubble
 		cout << "Trapped People (\033[31myes/\033[32mno\033[0m)\t\t\t\t: ";
 		cin >> trapped_ppl;
 		while (trapped_ppl != "yes" && trapped_ppl != "Yes" && trapped_ppl != "No" && trapped_ppl != "no" && trapped_ppl != "y" && trapped_ppl != "n" && trapped_ppl != "Y" && trapped_ppl != "N") {
@@ -97,7 +129,7 @@ int earthquake() {
 			cin >> trapped_ppl;
 		}
 
-
+		//Whether the vulnerable groups (elderly, children, disable, etc.) are present
 		cout << "Vulnerable Groups Present (\033[31myes/\033[32mno\033[0m)\t\t: ";
 		cin >> vulnerable_grps;
 		while (vulnerable_grps != "yes" && vulnerable_grps != "Yes" && vulnerable_grps != "No" && vulnerable_grps != "no" && vulnerable_grps != "y" && vulnerable_grps != "n" && vulnerable_grps != "Y" && vulnerable_grps != "N") {
@@ -106,6 +138,7 @@ int earthquake() {
 			cin >> vulnerable_grps;
 		}
 
+		//Whether the local clinic is still functional (affects how much medical support is needed
 		cout << "Local Clinic Functional (\033[32myes/\033[31mno\033[0m)\t\t: ";
 		cin >> local_clinic;
 		while (local_clinic != "yes" && local_clinic != "Yes" && local_clinic != "No" && local_clinic != "no" && local_clinic != "y" && local_clinic != "n" && local_clinic != "Y" && local_clinic != "N") {
@@ -114,6 +147,7 @@ int earthquake() {
 			cin >> local_clinic;
 		}
 
+		//Whether the area has already received aid previously (reduces priority slightly)
 		cout << "Previous Aid Received (yes/no)\t\t\t: ";
 		cin >> previous_aid_received;
 		while (previous_aid_received != "yes" && previous_aid_received != "Yes" && previous_aid_received != "No" && previous_aid_received != "no" && previous_aid_received != "y" && previous_aid_received != "n" && previous_aid_received != "Y" && previous_aid_received != "N") {
@@ -122,6 +156,11 @@ int earthquake() {
 			cin >> previous_aid_received;
 		}
 
+		/* ---NEED SCORE CALCULATION--
+		The score is build from three sub-scores (people, impact and complexity)
+		Each of them is weighted differently, combined and then adjusted. */
+
+		//People points: how much people are affected due to the earthquake
 		int people_points = 0;
 		if (families_affected >= 10 && families_affected <= 50)
 			people_points = people_points + 5;
@@ -140,6 +179,7 @@ int earthquake() {
 		if (local_clinic == "no" || local_clinic == "No" || local_clinic == "n" || local_clinic == "N")
 			people_points = people_points + 10;
 
+		//Impact points: severity of physical/ structural damage and ongoing risks
 		int impact_points = 0;
 		if (damage_level == "High" || damage_level == "high" || damage_level == "H" || damage_level == "h")
 			impact_points = impact_points + 60;
@@ -150,11 +190,13 @@ int earthquake() {
 		if (aftershocks == "yes" || aftershocks == "Yes" || aftershocks == "y" || aftershocks == "Y")
 			impact_points = impact_points + 40;
 
+		//Complexity points: how hard it is to physically deliver aid
 		int complexity_points = 0;
 		if (access_route == "no" || access_route == "No" || access_route == "n" || access_route == "N")
 			complexity_points = complexity_points + 100;
 
-
+		/*Total needscore is the weighted combination of three categories:
+		people (50%) + impact (40%) + complexity (10%) */
 		float needscore;
 		needscore = (0.5 * people_points) + (0.4 * impact_points) + (0.1 * complexity_points);
 		if (previous_aid_received == "yes" || previous_aid_received == "Yes" || previous_aid_received == "y" || previous_aid_received == "Y")
