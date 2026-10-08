@@ -58,7 +58,7 @@ int disasters() {
 5. Updates the stock
 6. Prints a summary*/
 int earthquake() {
-	cout << "\nEarthquake Disaster Selected!" << endl;
+	cout << "\n\033[36m" << "Earthquake Disaster Selected!" << "\033[0m" << endl;
 	cout << "\nDisaster Type: Earthquake" << endl;
 	cout << "Please enter the details of the earthquake disaster." << endl;
 	
@@ -148,7 +148,7 @@ int earthquake() {
 		}
 
 		//Whether the area has already received aid previously (reduces priority slightly)
-		cout << "Previous Aid Received (yes/no)\t\t\t: ";
+		cout << "Previous Aid Received (\033[31mno/\033[32myes\033[0m)\t\t\t: ";
 		cin >> previous_aid_received;
 		while (previous_aid_received != "yes" && previous_aid_received != "Yes" && previous_aid_received != "No" && previous_aid_received != "no" && previous_aid_received != "y" && previous_aid_received != "n" && previous_aid_received != "Y" && previous_aid_received != "N") {
 			cout << "Invalid input. Please enter yes or no." << endl;
@@ -199,13 +199,17 @@ int earthquake() {
 		people (50%) + impact (40%) + complexity (10%) */
 		float needscore;
 		needscore = (0.5 * people_points) + (0.4 * impact_points) + (0.1 * complexity_points);
+		//Penalty if the area has already received aid before (lower relative priority)
 		if (previous_aid_received == "yes" || previous_aid_received == "Yes" || previous_aid_received == "y" || previous_aid_received == "Y")
 			needscore = needscore - 10;
+		//Clamp the score between the valid 0-100 range
 		if (needscore > 100)
 			needscore = 100;
 		if (needscore < 0)
 			needscore = 0;
 		cout << fixed << setprecision(1);
+
+		//Colorcode the printed score by severity band (just for readability in terminal)
 		if (needscore < 20)
 			cout << "\033[32m"; //Green Text
 		else if (needscore >= 20 && needscore < 40)
@@ -218,23 +222,31 @@ int earthquake() {
 
 		cout << "\nThe Calculated Need Score: " << needscore;
 
+		//---Decision/Action Rules---
 		string action;
 		int level = 0, trucksused = 0, packsused = 0;
 
 		if (needscore < 20)
 		{
+			//Scores below 20 are not urgent enough to act on right now
 			action = "Deferred";
 			deferred++;
 
 		}
 		else
 		{
+			//Map the score band to a starting relief "level"
+			// (level 1 = largest relief package, level 3 = smallest)
 			if (needscore >= 20 && needscore < 40)
 				level = 3; //emergency first aid kit
 			else if (needscore >= 40 && needscore < 65)
 				level = 2; //standard aid
 			else if (needscore >= 65)
 				level = 1; //full aid
+
+			/*Try to fulfill at the assigned level. 
+			If stock is insufficient, step down to a smaller relief level instead of 
+			refusing outright */
 			bool sent = false;
 			while (!sent && level <= 3) {
 				int trucksneeded = 0, packsneeded = 0;
@@ -247,6 +259,7 @@ int earthquake() {
 				else if (level == 3) {
 					trucksneeded = 1; packsneeded = 10;
 				}
+				//Only dispatch if enough trucks AND supply packs are available
 				if (trucks >= trucksneeded && supply_packs >= packsneeded) {
 					trucks = trucks - trucksneeded;
 					supply_packs = supply_packs - packsneeded;
@@ -260,27 +273,31 @@ int earthquake() {
 					else if (level == 3) action = "Emergency Kit";
 				}
 				else
-					level++;
+					level++; // not enough stock at this level, try a smaller one
 			}
+			// If even the smallest relief level couldnt be met, defer the request
 			if (!sent) {
 				action = "Deferred - not enough stock";
 				deferred++;
 			}
 		}
 
-		cout << "\033[0m"; // Reset color
-
+		cout << "\033[0m"; // Reset terminal color
+		
+		//---Print result for this request---
 		cout << "\n\nRelief Given for "<<area<<": "<< action << endl;
 		cout << "\nTrucks Used: " << trucksused << " Supply Packs Used: " << packsused << endl;
 		cout << "Remaining stock: " << trucks << "trucks , " << supply_packs << " supply packs"<<endl;
 
+		//Ask whether to process another request, loop continues if yes
 		cout << "\nDo you have another relief request? (Yes/No)\t: ";
 		cin >> earth_quake;
 	}
 
-	cout << "\n---SUMMARY OF THE EARTHQUAKE---";
-	cout << "\nRequests served: " << request_handled << endl;
-	cout << "Requests deferred: " << deferred << endl;
+	//---END OF DISASTER SUMMARY--
+	cout << "\033[36m" << "\n--- SUMMARY OF THE EARTHQUAKE--- "<<"\033[0";
+	cout << "\033[32m" << "\nRequests served : " << request_handled << "\033[0m" << endl;
+	cout << "\033[31m" << "Requests deferred : " << deferred << "\033[0m" << endl;
 	cout << "Trucks remaining: " << trucks << endl;
 	cout << "Supply packs remaining: " << supply_packs << endl;
 
@@ -288,6 +305,10 @@ int earthquake() {
 	return 0;
 }
 
+/*Program entry point:
+1. shows welcome message
+2. sets up inventory
+3. loops over disasters until the user indicates there are no more to process */
 int main() {
 	welcome();
 	inventory();
