@@ -14,7 +14,7 @@ string damage_level, access_route, aftershocks, area, medical_need, trapped_ppl,
 
 //Prints the welcome banner when the program starts
 int welcome() {
-	cout << "\nHi! Welcome to the Relief Supply Distribution System!" << endl;
+	cout << "\033[36m" << "\nHi! Welcome to the Relief Supply Distribution System!" << endl;
 	return 0;
 }
 
