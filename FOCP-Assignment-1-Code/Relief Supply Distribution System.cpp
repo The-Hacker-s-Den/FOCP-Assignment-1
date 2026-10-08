@@ -10,11 +10,35 @@ request_handled, deferred = running counters
 The string variables hold the yes/n and cateogircal answers collected from the user*/
 
 int trucks = 5, supply_packs = 120, disaster = 0, families_affected = 0, deferred = 0, request_handled = 0;
-string damage_level, access_route, aftershocks, area, medical_need, trapped_ppl, vulnerable_grps, local_clinic, previous_aid_received, selected_package, earth_quake, disas_start, update_inventory;
+string damage_level, access_route, aftershocks, area, medical_need, trapped_ppl, vulnerable_grps, local_clinic, previous_aid_received, selected_package, earth_quake, disas_start, update_inventory, main_option;
+
 
 //Prints the welcome banner when the program starts
 int welcome() {
-	cout << "\033[36m" << "\nHi! Welcome to the Relief Supply Distribution System!" << endl;
+	cout << "\033[36m" << "\nHi! Welcome to the Relief Supply Distribution System!\033[0m" << endl;
+	return 0;
+}
+
+int main_menu() {
+	cout << "\nThe available options are:" << endl;
+	cout << "\033[4mCommand:\tFunction:\t\t\tDescription:\033[0m" << endl;
+	cout << "Help\t\tShow Help Menu\t\t\tShow the help menu" << endl;
+	cout << "Inventory\tView Inventory\t\t\tView the current inventory" << endl;
+	cout << "Disaster\tSelect Disaster\t\t\tSelect a disaster to respond to" << endl;
+	cout << "Exit\t\tExit Program\t\t\tExit the program" << endl;
+	cout << "\nPlease enter a command to continue: ";
+	cin >> main_option;
+	while (main_option != "Inventory" && main_option != "Disaster" && main_option != "Exit" && main_option != "Help" && main_option != "inventory" && main_option != "disaster" && main_option != "exit" && main_option != "help" && main_option != "d" && main_option != "e" && main_option != "i" && main_option != "h" && main_option != "D" && main_option != "E" && main_option != "I" && main_option != "H") {
+		cout << "Invalid input. Please enter a valid option." << endl;
+		cout << "\nThe available options are:" << endl;
+		cout << "\033[4mCommand:\tFunction:\t\t\tDescription:\033[0m" << endl;
+		cout << "Help\t\tShow Help Menu\t\t\tShow the help menu" << endl;
+		cout << "Inventory\tView Inventory\t\t\tView the current inventory" << endl;
+		cout << "Disaster\tSelect Disaster\t\t\tSelect a disaster to respond to" << endl;
+		cout << "Exit\t\tExit Program\t\t\tExit the program" << endl;
+		cout << "\nPlease enter a command to continue: ";
+		cin >> main_option;
+	}
 	return 0;
 }
 
@@ -308,15 +332,30 @@ int earthquake() {
 3. loops over disasters until the user indicates there are no more to process */
 int main() {
 	welcome();
-	inventory();
-	do {
+	main_menu();
+	if (main_option == "Exit" || main_option == "exit" || main_option == "e" || main_option == "E") {
+		cout << "\nThank you for using the Relief Supply Distribution System." << endl;
+		return 0;
+	}
+	else if (main_option == "Inventory" || main_option == "inventory" || main_option == "i" || main_option == "I") {
+		inventory();
+		main_menu();
+	}
+	else if (main_option == "Disaster" || main_option == "disaster" || main_option == "d" || main_option == "D") {
 		disasters();
-		if (disaster == 1) {
-			earthquake();
-		}
-		cout << "\nIs there another disaster?(yes/no) ";
-		cin >> disas_start;
-	} while (disas_start != "no" && disas_start != "No" && disas_start!="n"&&disas_start!="N");
+	}
+	else if (main_option == "Help" || main_option == "help" || main_option == "h" || main_option == "H") {
+		cout << "\nThis is a disaster managment system developed by MEEEEEEEEEEEE." << endl;
+		main_menu();
+	}
+	if (disaster == 1) {
+		earthquake();
+	}
+	cout << "\nIs there another disaster?(yes/no) ";
+	cin >> disas_start;
+	if (disas_start == "yes" || disas_start == "Yes" || disas_start == "y" || disas_start == "Y") {
+		disasters();
+	}
 	cout << "\nThank you for using the Relief Supply Distribution System." << endl;
 	return 0;
 }
