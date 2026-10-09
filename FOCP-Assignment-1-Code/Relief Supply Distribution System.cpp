@@ -308,7 +308,7 @@ int earthquake() {
 		//---Print result for this request---
 		cout << "\n\nRelief Given for "<<area<<": "<< action << endl;
 		cout << "\nTrucks Used: " << trucksused << " Supply Packs Used: " << packsused << endl;
-		cout << "Remaining stock: " << trucks << "trucks , " << supply_packs << " supply packs"<<endl;
+		cout << "Remaining stock: " << trucks << " trucks , " << supply_packs << " supply packs"<<endl;
 
 		//Ask whether to process another request, loop continues if yes
 		cout << "\nDo you have another relief request? (Yes/No)\t: ";
@@ -333,29 +333,36 @@ int earthquake() {
 int main() {
 	welcome();
 	main_menu();
-	if (main_option == "Exit" || main_option == "exit" || main_option == "e" || main_option == "E") {
-		cout << "\nThank you for using the Relief Supply Distribution System." << endl;
-		return 0;
+	while (main_option != "Exit" && main_option != "exit" && main_option != "e" && main_option != "E") {
+		if (main_option == "Exit" || main_option == "exit" || main_option == "e" || main_option == "E") {
+			cout << "\nThank you for using the Relief Supply Distribution System." << endl;
+			return 0;
+		}
+		else if (main_option == "Inventory" || main_option == "inventory" || main_option == "i" || main_option == "I") {
+			inventory();
+			main_menu();
+		}
+		else if (main_option == "Disaster" || main_option == "disaster" || main_option == "d" || main_option == "D") {
+			disasters();
+		}
+		else if (main_option == "Help" || main_option == "help" || main_option == "h" || main_option == "H") {
+			cout << "\nThis is a disaster managment system developed by MEEEEEEEEEEEE." << endl;
+			main_menu();
+		}
+		if (disaster == 1) {
+			earthquake();
+			cout << "\nIs there another disaster?(yes/no) ";
+			cin >> disas_start;
+		}
+
+		if (disas_start == "yes" || disas_start == "Yes" || disas_start == "y" || disas_start == "Y") {
+			disasters();
+		}
+		else if (disas_start == "no" || disas_start == "No" || disas_start == "n" || disas_start == "N") {
+			cout << "\nThank you for using the Relief Supply Distribution System." << endl;
+			return 0;
+		}
 	}
-	else if (main_option == "Inventory" || main_option == "inventory" || main_option == "i" || main_option == "I") {
-		inventory();
-		main_menu();
-	}
-	else if (main_option == "Disaster" || main_option == "disaster" || main_option == "d" || main_option == "D") {
-		disasters();
-	}
-	else if (main_option == "Help" || main_option == "help" || main_option == "h" || main_option == "H") {
-		cout << "\nThis is a disaster managment system developed by MEEEEEEEEEEEE." << endl;
-		main_menu();
-	}
-	if (disaster == 1) {
-		earthquake();
-	}
-	cout << "\nIs there another disaster?(yes/no) ";
-	cin >> disas_start;
-	if (disas_start == "yes" || disas_start == "Yes" || disas_start == "y" || disas_start == "Y") {
-		disasters();
-	}
-	cout << "\nThank you for using the Relief Supply Distribution System." << endl;
-	return 0;
+cout << "\nThank you for using the Relief Supply Distribution System." << endl;
+return 0;
 }
