@@ -22,17 +22,15 @@ int welcome() {
 int main_menu() {
 	cout << "\nThe available options are:" << endl;
 	cout << "\033[4mCommand:\tFunction:\t\t\tDescription:\033[0m" << endl;
-	cout << "Help\t\tShow Help Menu\t\t\tShow the help menu" << endl;
 	cout << "Inventory\tView Inventory\t\t\tView the current inventory" << endl;
 	cout << "Disaster\tSelect Disaster\t\t\tSelect a disaster to respond to" << endl;
 	cout << "Exit\t\tExit Program\t\t\tExit the program" << endl;
 	cout << "\nPlease enter a command to continue: ";
 	cin >> main_option;
-	while (main_option != "Inventory" && main_option != "Disaster" && main_option != "Exit" && main_option != "Help" && main_option != "inventory" && main_option != "disaster" && main_option != "exit" && main_option != "help" && main_option != "d" && main_option != "e" && main_option != "i" && main_option != "h" && main_option != "D" && main_option != "E" && main_option != "I" && main_option != "H") {
+	while (main_option != "Inventory" && main_option != "Disaster" && main_option != "Exit" && main_option != "inventory" && main_option != "disaster" && main_option != "exit" && main_option != "d" && main_option != "e" && main_option != "i" && main_option != "D" && main_option != "E" && main_option != "I") {
 		cout << "Invalid input. Please enter a valid option." << endl;
 		cout << "\nThe available options are:" << endl;
 		cout << "\033[4mCommand:\tFunction:\t\t\tDescription:\033[0m" << endl;
-		cout << "Help\t\tShow Help Menu\t\t\tShow the help menu" << endl;
 		cout << "Inventory\tView Inventory\t\t\tView the current inventory" << endl;
 		cout << "Disaster\tSelect Disaster\t\t\tSelect a disaster to respond to" << endl;
 		cout << "Exit\t\tExit Program\t\t\tExit the program" << endl;
@@ -344,10 +342,6 @@ int main() {
 		}
 		else if (main_option == "Disaster" || main_option == "disaster" || main_option == "d" || main_option == "D") {
 			disasters();
-		}
-		else if (main_option == "Help" || main_option == "help" || main_option == "h" || main_option == "H") {
-			cout << "\nThis is a disaster managment system developed by MEEEEEEEEEEEE." << endl;
-			main_menu();
 		}
 		if (disaster == 1) {
 			earthquake();
