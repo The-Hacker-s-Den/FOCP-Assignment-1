@@ -65,7 +65,15 @@ int disasters() {
 	cout << "\n\nBelow is a list of available disasters:" << endl;
 	cout << "1. Earthquake" << endl;
 	cout << "\nPlease select a disaster by entering the corresponding number: ";
-	cin >> disaster;
+	while (!(cin >> disaster)) {
+		cin.clear(); // Clear the error flag
+		cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignore the invalid input
+		cout << "Invalid input. Please enter a valid disaster number." << endl;
+		cout << "\n\nBelow is a list of available disasters:" << endl;
+		cout << "1. Earthquake" << endl;
+		cout << "\nPlease select a disaster by entering the corresponding number: ";
+		cin >> disaster;
+	}
 		return 0;
 }
 
