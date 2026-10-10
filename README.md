@@ -25,8 +25,8 @@ The relevant source files are included in the repository. Please refer to the fi
 
 ## Contributors
 
-<p align="left">
-  <img src="https://github.com/Shaheer-Mirza.png?size=80" width="80" height="80" alt="Shaheer-Mirza" />
-  <img src="https://github.com/rameen-debug.png?size=80" width="80" height="80" alt="rameen-debug" />
-  <img src="https://github.com/Hania1573.png?size=80" width="80" height="80" alt="Hania1573" />
+<p align="center">
+  <img src="https://github.com/Shaheer-Mirza.png?size=80" width="80" height="80" alt="Shaheer-Mirza" style="border-radius: 50%;" />
+  <img src="https://github.com/rameen-debug.png?size=80" width="80" height="80" alt="rameen-debug" style="border-radius: 50%;" />
+  <img src="https://github.com/Hania1573.png?size=80" width="80" height="80" alt="Hania1573" style="border-radius: 50%;" />
 </p>
