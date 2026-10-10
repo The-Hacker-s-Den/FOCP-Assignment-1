@@ -41,7 +41,7 @@ If the area already received aid: N = N − 10.
 
 Clamp N to the range 0–100. Round to 1 decimal place.
 
-Category weights: People 50%, Impact 40%, Access 10%. Maximum N = 50 + 40 + 10 = 100.
+Category weights: People 50%, Impact 40%, Complexity 10%. Maximum N = 50 + 40 + 10 = 100.
 
 ### 1.5 Effective weight of each input in the final score
 
@@ -56,10 +56,10 @@ Category weights multiply the raw points. This table shows what each input is ac
 | Families affected (low to high bracket) | 5–20 (of Pepole Points) | 2.5–10.0 |
 | Infrastructure damage (Low / Medium / High) | 12 / 36 / 60 (of Impact Points) | 4.8 / 14.4 / 24.0 |
 | Aftershock warning | 40 (of Impact Points) | 16.0 |
-| Road damaged | 100 (of Access Points) | 10.0 |
+| Road damaged | 100 (of Complexity Points) | 10.0 |
 | Prior aid received | −10 flat | −10.0 |
 
-Totals: People inputs 15 + 12.5 + 7.5 + 5 + 10 = 50. Impact inputs 24 + 16 = 40. Access 10.
+Totals: People inputs 15 + 12.5 + 7.5 + 5 + 10 = 50. Impact inputs 24 + 16 = 40. Complexity 10.
 
 ## 2. Rules
 
@@ -138,7 +138,7 @@ The point values are design judgements by the project team. They are not statist
 
 **Aftershock warning: 40 raw (40% of Impact), 16.0 final.** Aftershocks can collapse already weakened buildings, injure survivors and endanger responders, and push people to stay outdoors, which raises shelter, water and warmth needs. It affects everyone in the area, so it sits in Impact and carries a high weight. An aftershock warning alone is enough to lift even a Low-damage, 10-family request out of Defer / Monitor (minimum score 23.3).
 
-**Road damaged: 100 raw, 10.0 final.** A cut-off area cannot self-resupply, evacuate its injured or be reached by follow-up convoys, so relief must be sized for the delivery effort. The weight is only 10% because road condition describes delivery difficulty, not human suffering. An accessible area with trapped people must outrank an unreachable area with no casualties. A damaged road alone, with no other risk factor, scores 17.3 and does not trigger relief.
+**Road damaged: 100 raw, 10.0 final.** A cut-off area cannot self-resupply, evacuate its injured or be reached by follow-up convoys, so relief must be sized for the delivery effort. The complexity weight is only 10% because road condition describes delivery difficulty, not human suffering. An accessible area with trapped people must outrank an unreachable area with no casualties. A damaged road alone, with no other risk factor, scores 17.3 and does not trigger relief.
 
 **Prior aid received: −10 flat.** An area already served has had part of its initial need met. Limited stock should go first to areas with nothing. The deduction is a flat subtraction after the weighted sum, not a multiplier, so it lowers priority by roughly half a band without erasing severe need: any request with both trapped people and medical need still scores at least 24.8 after the penalty and receives at least an Emergency Kit when stock allows.
 
