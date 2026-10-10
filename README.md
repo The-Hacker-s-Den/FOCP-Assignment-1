@@ -49,11 +49,11 @@ Category weights multiply the raw points. This table shows what each input is ac
 
 | Input | Raw points | Points in final score |
 | --- | --- | --- |
-| People trapped | 30 (of Pepole Points) | 15.0 |
-| Medical need | 25 (of Pepole Points) | 12.5 |
-| Vulnerable groups present | 15 (of Pepole Points) | 7.5 |
-| Local clinic not working | 10 (of Pepole Points) | 5.0 |
-| Families affected (low to high bracket) | 5–20 (of Pepole Points) | 2.5–10.0 |
+| People trapped | 30 (of People Points) | 15.0 |
+| Medical need | 25 (of People Points) | 12.5 |
+| Vulnerable groups present | 15 (of People Points) | 7.5 |
+| Local clinic not working | 10 (of People Points) | 5.0 |
+| Families affected (low to high bracket) | 5–20 (of People Points) | 2.5–10.0 |
 | Infrastructure damage (Low / Medium / High) | 12 / 36 / 60 (of Impact Points) | 4.8 / 14.4 / 24.0 |
 | Aftershock warning | 40 (of Impact Points) | 16.0 |
 | Road damaged | 100 (of Complexity Points) | 10.0 |
