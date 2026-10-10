@@ -10,7 +10,7 @@ request_handled, deferred = running counters
 The string variables hold the yes/n and cateogircal answers collected from the user*/
 
 int trucks = 5, supply_packs = 120, disaster = 0, families_affected = 0, deferred = 0, request_handled = 0;
-string damage_level, access_route, aftershocks, area, medical_need, trapped_ppl, vulnerable_grps, local_clinic, previous_aid_received, selected_package, earth_quake, disas_start, update_inventory, main_option;
+string damage_level, access_route, aftershocks, area, medical_need, trapped_ppl, vulnerable_grps, local_clinic, previous_aid_received, selected_package, earth_quake, disas_start, update_inventory, main_option, province;
 
 
 //Prints the welcome banner when the program starts
@@ -72,7 +72,6 @@ int disasters() {
 		cout << "\n\nBelow is a list of available disasters:" << endl;
 		cout << "1. Earthquake" << endl;
 		cout << "\nPlease select a disaster by entering the corresponding number: ";
-		cin >> disaster;
 	}
 		return 0;
 }
@@ -97,6 +96,8 @@ int earthquake() {
 	while (earth_quake == "y" || earth_quake == "Y" || earth_quake == "yes" || earth_quake == "Yes") {
 		
 		//Collect request details (each with input validation loops)
+		cout << "\nEnter province\t\t\t\t: ";
+		cin >> province;
 		cout << "\nEnter name of area\t\t\t\t: ";
 		cin >> area;
 
@@ -316,6 +317,149 @@ int earthquake() {
 		cout << "\nTrucks Used: " << trucksused << " Supply Packs Used: " << packsused << endl;
 		cout << "Remaining stock: " << trucks << " trucks , " << supply_packs << " supply packs"<<endl;
 
+		//Ask whether the program should predict people under the rubble based on the number of families affected
+		cout << "\nWould you like to predict the number of people trapped under the rubble based on the number of families affected? (Yes/No)\t: ";
+		if (cin >> earth_quake && (earth_quake == "y" || earth_quake == "Y" || earth_quake == "yes" || earth_quake == "Yes")) {
+			if (province == "Sindh" || province == "sindh" || province == "SINDH") {
+				cout << "\nNote: In Sindh, the average family size is 5.6 people per family." << endl;
+				float predicted_trapped = families_affected * 5.6; //Assuming an average of 5.6 people per family in Sindh
+				int unaffected_people = 0;
+				if (damage_level == "High" || damage_level == "high" || damage_level == "H" || damage_level == "h") {
+					predicted_trapped = predicted_trapped * 1;
+				}
+				else if (damage_level == "medium" || damage_level == "Medium" || damage_level == "M" || damage_level == "m")
+					predicted_trapped = predicted_trapped * 0.5;
+				else if (damage_level == "Low" || damage_level == "low" || damage_level == "L" || damage_level == "l")
+					predicted_trapped = predicted_trapped * 0.0;
+				cout << "number of reported found people/ safe or unaffected people: ";
+				cin >> unaffected_people;
+				predicted_trapped = predicted_trapped - unaffected_people;
+				if (predicted_trapped < 0) {
+					predicted_trapped = 0; // Ensure predicted trapped people is not negative
+				}
+				cout << "\nPredicted number of people trapped under the rubble: " << predicted_trapped << endl;
+			}
+			else if (province == "Punjab" || province == "punjab" || province == "PUNJAB") {
+				cout << "\nNote: In Punjab, the average family size is 6.4 people per family." << endl;
+				float predicted_trapped = families_affected * 6.4; //Assuming an average of 6.4 people per family in Punjab
+				int unaffected_people = 0;
+				if (damage_level == "High" || damage_level == "high" || damage_level == "H" || damage_level == "h") {
+					predicted_trapped = predicted_trapped * 1;
+				}
+				else if (damage_level == "medium" || damage_level == "Medium" || damage_level == "M" || damage_level == "m")
+					predicted_trapped = predicted_trapped * 0.5;
+				else if (damage_level == "Low" || damage_level == "low" || damage_level == "L" || damage_level == "l")
+					predicted_trapped = predicted_trapped * 0.0;
+				cout << "number of reported found people/ safe or unaffected people: ";
+				cin >> unaffected_people;
+				predicted_trapped = predicted_trapped - unaffected_people;
+				if (predicted_trapped < 0) {
+					predicted_trapped = 0; // Ensure predicted trapped people is not negative
+				}
+				cout << "\nPredicted number of people trapped under the rubble: " << predicted_trapped << endl;
+			}
+			else if (province == "Balochistan" || province == "balochistan" || province == "BALOCHISTAN") {
+				cout << "\nNote: In Balochistan, the average family size is 6.4 people per family." << endl;
+				float predicted_trapped = families_affected * 6.4; //Assuming an average of 6.4 people per family in Balochistan
+				int unaffected_people = 0;
+				if (damage_level == "High" || damage_level == "high" || damage_level == "H" || damage_level == "h") {
+					predicted_trapped = predicted_trapped * 1;
+				}
+				else if (damage_level == "medium" || damage_level == "Medium" || damage_level == "M" || damage_level == "m")
+					predicted_trapped = predicted_trapped * 0.5;
+				else if (damage_level == "Low" || damage_level == "low" || damage_level == "L" || damage_level == "l")
+					predicted_trapped = predicted_trapped * 0.0;
+				cout << "number of reported found people/ safe or unaffected people: ";
+				cin >> unaffected_people;
+				predicted_trapped = predicted_trapped - unaffected_people;
+				if (predicted_trapped < 0) {
+					predicted_trapped = 0; // Ensure predicted trapped people is not negative
+				}
+				cout << "\nPredicted number of people trapped under the rubble: " << predicted_trapped << endl;
+			}
+			else if (province == "Khyber Pakhtunkhwa" || province == "khyber pakhtunkhwa" || province == "KPK" || province == "kpk") {
+				cout << "\nNote: In Khyber Pakhtunkhwa, the average family size is 6.9 people per family." << endl;
+				float predicted_trapped = families_affected * 6.9; //Assuming an average of 6.9 people per family in Khyber Pakhtunkhwa
+				int unaffected_people = 0;
+				if (damage_level == "High" || damage_level == "high" || damage_level == "H" || damage_level == "h") {
+					predicted_trapped = predicted_trapped * 1;
+				}
+				else if (damage_level == "medium" || damage_level == "Medium" || damage_level == "M" || damage_level == "m")
+					predicted_trapped = predicted_trapped * 0.5;
+				else if (damage_level == "Low" || damage_level == "low" || damage_level == "L" || damage_level == "l")
+					predicted_trapped = predicted_trapped * 0.0;
+				cout << "number of reported found people/ safe or unaffected people: ";
+				cin >> unaffected_people;
+				predicted_trapped = predicted_trapped - unaffected_people;
+				if (predicted_trapped < 0) {
+					predicted_trapped = 0; // Ensure predicted trapped people is not negative
+				}
+				cout << "\nPredicted number of people trapped under the rubble: " << predicted_trapped << endl;
+			}
+			else if (province == "Gilgit-Baltistan" || province == "gilgit-baltistan" || province == "GB" || province == "gb" || province == "Gilgit" || province == "Baltistan") {
+				cout << "\nNote: In Gilgit-Baltistan, the average family size is 7.3 people per family." << endl;
+				float predicted_trapped = families_affected * 7.3; //Assuming an average of 7.3 people per family in Gilgit-Baltistan
+				int unaffected_people = 0;
+				if (damage_level == "High" || damage_level == "high" || damage_level == "H" || damage_level == "h") {
+					predicted_trapped = predicted_trapped * 1;
+				}
+				else if (damage_level == "medium" || damage_level == "Medium" || damage_level == "M" || damage_level == "m")
+					predicted_trapped = predicted_trapped * 0.5;
+				else if (damage_level == "Low" || damage_level == "low" || damage_level == "L" || damage_level == "l")
+					predicted_trapped = predicted_trapped * 0.0;
+				cout << "number of reported found people/ safe or unaffected people: ";
+				cin >> unaffected_people;
+				predicted_trapped = predicted_trapped - unaffected_people;
+				if (predicted_trapped < 0) {
+					predicted_trapped = 0; // Ensure predicted trapped people is not negative
+				}
+				cout << "\nPredicted number of people trapped under the rubble: " << predicted_trapped << endl;
+			}
+			else if (province == "Azad Jammu and Kashmir" || province == "azad jammu and kashmir" || province == "AJK" || province == "ajk") {
+				cout << "\nNote: In Azad Jammu and Kashmir, the average family size is 6.7 people per family." << endl;
+				float predicted_trapped = families_affected * 6.7; //Assuming an average of 6.7 people per family in Azad Jammu and Kashmir
+				int unaffected_people = 0;
+				if (damage_level == "High" || damage_level == "high" || damage_level == "H" || damage_level == "h") {
+					predicted_trapped = predicted_trapped * 1;
+				}
+				else if (damage_level == "medium" || damage_level == "Medium" || damage_level == "M" || damage_level == "m")
+					predicted_trapped = predicted_trapped * 0.5;
+				else if (damage_level == "Low" || damage_level == "low" || damage_level == "L" || damage_level == "l")
+					predicted_trapped = predicted_trapped * 0.0;
+				cout << "number of reported found people/ safe or unaffected people: ";
+				cin >> unaffected_people;
+				predicted_trapped = predicted_trapped - unaffected_people;
+				if (predicted_trapped < 0) {
+					predicted_trapped = 0; // Ensure predicted trapped people is not negative
+				}
+				cout << "\nPredicted number of people trapped under the rubble: " << predicted_trapped << endl;
+			}
+			else if (province == "Islamabad" || province == "islamabad" || province == "ISB" || province == "isb") {
+				cout << "\nNote: In Islamabad, the average family size is 5.1 people per family." << endl;
+				float predicted_trapped = families_affected * 5.1; //Assuming an average of 5.1 people per family in Islamabad
+				int unaffected_people = 0;
+				if (damage_level == "High" || damage_level == "high" || damage_level == "H" || damage_level == "h") {
+					predicted_trapped = predicted_trapped * 1;
+				}
+				else if (damage_level == "medium" || damage_level == "Medium" || damage_level == "M" || damage_level == "m")
+					predicted_trapped = predicted_trapped * 0.5;
+				else if (damage_level == "Low" || damage_level == "low" || damage_level == "L" || damage_level == "l")
+					predicted_trapped = predicted_trapped * 0.0;
+				cout << "number of reported found people/ safe or unaffected people: ";
+				cin >> unaffected_people;
+				predicted_trapped = predicted_trapped - unaffected_people;
+				if (predicted_trapped < 0) {
+					predicted_trapped = 0; // Ensure predicted trapped people is not negative
+				}
+				cout << "\nPredicted number of people trapped under the rubble: " << predicted_trapped << endl;
+			}
+			else {
+				cout << "\nProvince not recognized. Unable to predict the number of people trapped under the rubble." << endl;
+			}
+		}
+		else {
+			cout << "\nPrediction skipped." << endl;
+		}
 		//Ask whether to process another request, loop continues if yes
 		cout << "\nDo you have another relief request? (Yes/No)\t: ";
 		cin >> earth_quake;
