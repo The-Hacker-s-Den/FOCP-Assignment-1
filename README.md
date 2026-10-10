@@ -27,15 +27,15 @@ I = D + 40 × Aftershock
 | Infrastructure damage (D): Low / Medium / High | 12 / 36 / 60 |
 | Aftershock warning (yes) | 40 |
 
-### 1.3 Access points (A), 0 or 100
+### 1.3 Complexity points (C), 0 or 100
 
-- A = 100 if the road is damaged.&#32;
+- C = 100 if the road is damaged.&#32;
 
-* A = 0 if the road is open.
+* C = 0 if the road is open.
 
 ### 1.4 Need Score (N)
 
-N = (0.5 × People Points) + (0.4 × Impact Points) + (0.1 × Access Points)
+N = (0.5 × People Points) + (0.4 × Impact Points) + (0.1 × Complexity Points)
 
 If the area already received aid: N = N − 10.
 
