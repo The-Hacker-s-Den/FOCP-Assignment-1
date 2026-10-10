@@ -15,7 +15,7 @@ string damage_level, access_route, aftershocks, area, medical_need, trapped_ppl,
 
 //Prints the welcome banner when the program starts
 int welcome() {
-	cout << "\033[36m" << "\nHi! Welcome to the Relief Supply Distribution System!\033[0m" << endl;
+	cout << "\033[36m"<<"\nHi!Welcome to the Relief Supply Distribution System!" << "\033[0m" << endl;
 	return 0;
 }
 
@@ -66,6 +66,15 @@ int disasters() {
 	cout << "1. Earthquake" << endl;
 	cout << "\nPlease select a disaster by entering the corresponding number: ";
 	cin >> disaster;
+	while (!(cin >> disaster)) {
+		cin.clear(); // Clear the error flag
+		cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignore the invalid input
+		cout << "Invalid input. Please enter a valid disaster number." << endl;
+		cout << "\n\nBelow is a list of available disasters:" << endl;
+		cout << "1. Earthquake" << endl;
+		cout << "\nPlease select a disaster by entering the corresponding number: ";
+		cin >> disaster;
+	}
 	return 0;
 }
 
