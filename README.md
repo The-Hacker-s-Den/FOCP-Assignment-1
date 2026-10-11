@@ -129,23 +129,23 @@ The following sample tests were performed to test the program's processing of th
 
 ### 3.1 R1 – Riverside Village (Sufficient Resources)
 
-&#91;image: image.png\]
+![R1 test output](Tests/Test1.png)
 
 ### 3.2 R2 – Hilltop Settlement (Sufficient Resources)
 
-&#91;image: image.png\]
+![R2 test output](Tests/Test2.png)
 
 ### 3.3 R3 – Lakeside Camp (Sufficient Resources)
 
-&#91;image: image.png\]
+![R3 test output](Tests/Test3.png)
 
-### 3.4 R2 – Market Town (Insufficient Resources)&#32;
+### 3.4 R4 – Market Town (Insufficient Resources)&#32;
 
-&#91;image: image.png\]
+![R4 test output](Tests/Test4.png)
 
 ### 3.5 R5 -Bridge  Colony(Insufficient Resources)
 
-&#91;image: image.png\]
+![R5 test output](Tests/Test5.png)
 
 ## 4. Rationale
 
