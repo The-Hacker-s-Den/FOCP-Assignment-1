@@ -377,7 +377,7 @@ int earthquake() {
 				}
 				cout << "\nPredicted number of people trapped under the rubble: " << predicted_trapped << endl;
 			}
-			else if (province == "Khyber Pakhtunkhwa" || province == "khyber pakhtunkhwa" || province == "KPK" || province == "kpk") {
+			else if (province == "Khyber-Pakhtunkhwa" || province == "khyber-pakhtunkhwa" || province == "KPK" || province == "kpk") {
 				cout << "\nNote: In Khyber Pakhtunkhwa, the average family size is 6.9 people per family." << endl;
 				float predicted_trapped = families_affected * 6.9; //Assuming an average of 6.9 people per family in Khyber Pakhtunkhwa
 				int unaffected_people = 0;
