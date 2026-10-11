@@ -209,6 +209,18 @@ The point values are design judgements by the project team. They are not statist
 
 •         Stock is deducted only after a package is confirmed, so a failed attempt never leaves stock partly consumed.
 
+# 4.5 Reasoning behind the prediction or estimation of people trapped under rubble
+
+•         This subprogram uses nested if-else ladder to estimate the trapped people.
+
+•         Every province has its unique average no. of family size which is multiplied by the families affected to find the total no. of people trapped.
+
+•         The total no. of people affected are than multiplied by 1 if the damage level is "High" or 0.5 if the damage level is "Medium" and 0 if its "Low". This is done so that no. of families affected doesn't change when there is "High" damage level so that people's lives aren't ignored. However, when the damage level is "Medium"  the total no. of people affected is halved as it wasn't a full scale destructive earthquake but its still kept at half to estimate the farthest range or "worst case scenario".
+
+•         Finally any reported rescued people/safe/unaffected people are subtracted for accuracy. If the answer goes below 0 ( < 0 ) it is set to 0 and ignored to stop the program from giving wrongful answers.
+
+•         NOTE: This program is in no way absolute or accurate, it is only a " Worst case estimation model " so that authorities have a rough idea of the severity of the situation and save as many hopeful human lives as possible.
+
 ## 5. Results
 
 ### 5.1 Capacity of the default stock
