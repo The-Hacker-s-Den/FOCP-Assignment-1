@@ -209,11 +209,11 @@ The point values are design judgements by the project team. They are not statist
 
 •         Stock is deducted only after a package is confirmed, so a failed attempt never leaves stock partly consumed.
 
-# 4.5 Reasoning behind the prediction or estimation of people trapped under rubble
+### 4.5 Reasoning behind the prediction or estimation of people trapped under rubble
 
 •         This subprogram uses nested if-else ladder to estimate the trapped people.
 
-•         Every province has its unique average no. of family size which is multiplied by the families affected to find the total no. of people trapped.
+•         Every province has its unique average family size which is multiplied by the families affected to find the total no. of people trapped.
 
 •         The total no. of people affected are than multiplied by 1 if the damage level is "High" or 0.5 if the damage level is "Medium" and 0 if its "Low". This is done so that no. of families affected doesn't change when there is "High" damage level so that people's lives aren't ignored. However, when the damage level is "Medium"  the total no. of people affected is halved as it wasn't a full scale destructive earthquake but its still kept at half to estimate the farthest range or "worst case scenario".
 
