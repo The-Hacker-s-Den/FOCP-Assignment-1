@@ -236,12 +236,16 @@ Trucks are the scarce resource for Emergency Kits. Packs are the scarce resource
 
 ## Getting the project
 
-Clone the repository with:
+### Clone the repository
 
 ```bash
 git clone https://github.com/The-Hacker-s-Den/FOCP-Assignment-1.git
 cd FOCP-Assignment-1
 ```
+
+### Download the latest release
+
+If you only want to run the app, you can download the latest release instead of cloning the source repository: [Latest release](https://github.com/The-Hacker-s-Den/FOCP-Assignment-1/releases/latest).
 
 The relevant source files are included in the repository. Please refer to the files themselves for the assignment-specific instructions and implementation details.
 
