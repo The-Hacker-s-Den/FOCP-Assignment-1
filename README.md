@@ -2,6 +2,8 @@
 
 This program manages relief supply distribution in case of a natural disaster such as an earthquake. Starting stock: 5 trucks, 120 supply packs. This program uses the data about the disaster to assign a severity index and a need score. Then, the need score is used to allocate the relief supply.
 
+[**GitHub Repository URL:**](https://github.com/The-Hacker-s-Den/FOCP-Assignment-1)[ https://github.com/The-Hacker-s-Den/FOCP-Assignment-1](https://github.com/The-Hacker-s-Den/FOCP-Assignment-1)
+
 ## 1. Formula
 
 Every relief request is converted into one Need Score from 0 to 100. Three sub-scores feed it.
@@ -29,9 +31,9 @@ I = D + 40 × Aftershock
 
 ### 1.3 Complexity points (C), 0 or 100
 
-- C = 100 if the road is damaged.&#32;
+•         A = 100 if the road is damaged.
 
-* C = 0 if the road is open.
+•         A = 0 if the road is open.
 
 ### 1.4 Need Score (N)
 
@@ -65,10 +67,13 @@ Totals: People inputs 15 + 12.5 + 7.5 + 5 + 10 = 50. Impact inputs 24 + 16 = 40.
 
 ### 2.1 Input validation
 
-- Families affected: integer from 10 to 200.
-- Medical need, trapped people, vulnerable groups, clinic working, aftershock warning, road open, prior aid: yes or no.
-- Damage level: High, Medium or Low.
-- An invalid answer produces an error message and the same question is asked again. Scoring starts only when every answer is valid.
+•         Families affected: integer from 10 to 200.
+
+•         Medical need, trapped people, vulnerable groups, clinic working, aftershock warning, road open, prior aid: yes or no.
+
+•         Damage level: High, Medium or Low.
+
+•         An invalid answer produces an error message and the same question is asked again. Scoring starts only when every answer is valid.
 
 ### 2.2 Package selection
 
@@ -81,13 +86,19 @@ Totals: People inputs 15 + 12.5 + 7.5 + 5 + 10 = 50. Impact inputs 24 + 16 = 40.
 
 ### 2.3 Dispatch and fallback
 
-1. Score below 20: mark the request Defer / Monitor. Send nothing. Stock is not checked.
-2. Otherwise select the package the score earned.
-3. Dispatch test: the package is sent only if trucks in stock ≥ trucks required AND supply packs in stock ≥ packs required. Both conditions must hold.
-4. If the test fails, step down one package and repeat step 3. Order: Full Relief → Standard Relief → Emergency Kit.
-5. If the Emergency Kit test fails, mark the request Deferred: not enough stock. Send nothing.
-6. On a successful dispatch, subtract the trucks and packs used from stock. Stock changes only on a successful dispatch.
-7. Stepping only goes down. A request is never upgraded above the package its score earned.
+1.       Score below 20: mark the request Defer / Monitor. Send nothing. Stock is not checked.
+
+2.       Otherwise select the package the score earned.
+
+3.       Dispatch test: the package is sent only if trucks in stock ≥ trucks required AND supply packs in stock ≥ packs required. Both conditions must hold.
+
+4.       If the test fails, step down one package and repeat step 3. Order: Full Relief → Standard Relief → Emergency Kit.
+
+5.       If the Emergency Kit test fails, mark the request Deferred: not enough stock. Send nothing.
+
+6.       On a successful dispatch, subtract the trucks and packs used from stock. Stock changes only on a successful dispatch.
+
+7.       Stepping only goes down. A request is never upgraded above the package its score earned.
 
 | Score band | Attempt order | Possible outcomes |
 | --- | --- | --- |
@@ -98,31 +109,63 @@ Totals: People inputs 15 + 12.5 + 7.5 + 5 + 10 = 50. Impact inputs 24 + 16 = 40.
 
 ### 2.4 Two kinds of deferral
 
-- Defer / Monitor: the score is below 20. Deliberate decision. Happens regardless of stock.
-- Deferred: not enough stock: the score earned a package but stock cannot fund even the smallest one (1 truck, 10 packs). Supply gap, not a need judgement. Signals that restocking is required.
+•         Defer / Monitor: the score is below 20. Deliberate decision. Happens regardless of stock.
+
+•         Deferred: not enough stock: the score earned a package but stock cannot fund even the smallest one (1 truck, 10 packs). Supply gap, not a need judgement. Signals that restocking is required.
 
 Both count as deferred in the summary.
 
 ### 2.5 Request loop and reporting
 
-- After each request the system shows the area, the action taken, trucks used, packs used and remaining stock.
-- Requests are processed in the order received. Stock is not reserved for later requests.
-- At the end of an earthquake the summary shows requests served, requests deferred, and trucks and packs remaining.
+•         After each request the system shows the area, the action taken, trucks used, packs used and remaining stock.
 
-## 3. Rationale
+•         Requests are processed in the order received. Stock is not reserved for later requests.
+
+•         At the end of an earthquake the summary shows requests served, requests deferred, and trucks and packs remaining.
+
+## 3. Sample Tests
+
+The following sample tests were performed to test the program's processing of the requests and it's behavior when trucks and/or supply packs run out.
+
+### 3.1 R1 – Riverside Village (Sufficient Resources)
+
+&#91;image: image.png\]
+
+### 3.2 R2 – Hilltop Settlement (Sufficient Resources)
+
+&#91;image: image.png\]
+
+### 3.3 R3 – Lakeside Camp (Sufficient Resources)
+
+&#91;image: image.png\]
+
+### 3.4 R2 – Market Town (Insufficient Resources)&#32;
+
+&#91;image: image.png\]
+
+### 3.5 R5 -Bridge  Colony(Insufficient Resources)
+
+&#91;image: image.png\]
+
+## 4. Rationale
 
 The point values are design judgements by the project team. They are not statistically calibrated against historical disaster data. The reasons below justify why each input is in the model, its rank against the other inputs, and its size relative to the package thresholds.
 
-### 3.1 Design principles
+### 4.1 Design principles
 
-1. People before logistics. Half of the score (50%) measures the condition of people.
-2. Condition before scale. A small area with entrapment must outrank a large area that is stable.
-3. Area-wide hazard is separate from person-level need. Hazards that affect everyone in the area, including responders, sit in Impact (40%).
-4. Delivery difficulty adjusts the response but does not measure suffering. Access carries the smallest weight (10%).
-5. Fairness across areas. An area that already received aid is deprioritised so stock reaches areas with nothing.
-6. Some help beats no help. When stock is short the system sends a smaller package instead of refusing.
+1.       People before logistics. Half of the score (50%) measures the condition of people.
 
-### 3.2 Reason for every input weight
+2.       Condition before scale. A small area with entrapment must outrank a large area that is stable.
+
+3.       Area-wide hazard is separate from person-level need. Hazards that affect everyone in the area, including responders, sit in Impact (40%).
+
+4.       Delivery difficulty adjusts the response but does not measure suffering. Complexity carries the smallest weight (10%).
+
+5.       Fairness across areas. An area that already received aid is deprioritised so stock reaches areas with nothing.
+
+6.       Some help beats no help. When stock is short the system sends a smaller package instead of refusing.
+
+### 4.2 Reason for every input weight
 
 **Trapped people: 30 raw, 15.0 final. Highest person-level weight.** Survival of people trapped in collapsed structures falls steeply with time. Urban search and rescue operations are planned around the first 72 hours. A delay here is irreversible: a life lost cannot be recovered by later aid. Trapped people also indicate collapse and injury in the same area.
 
@@ -142,25 +185,33 @@ The point values are design judgements by the project team. They are not statist
 
 **Prior aid received: −10 flat.** An area already served has had part of its initial need met. Limited stock should go first to areas with nothing. The deduction is a flat subtraction after the weighted sum, not a multiplier, so it lowers priority by roughly half a band without erasing severe need: any request with both trapped people and medical need still scores at least 24.8 after the penalty and receives at least an Emergency Kit when stock allows.
 
-### 3.3 Reason for the package thresholds
+### 4.3 Reason for the package thresholds
 
-- Below 20: only 83 of 1,536 possible input combinations (5.4%) fall here. The cut-off removes requests with almost no risk factors and nothing else.
-- 20 to 39.9, Emergency Kit: the smallest dispatch. Every dispatch needs at least one truck, so the truck is the minimum unit of response. 26.4% of combinations.
-- 40 to 64.9, Standard Relief: covers the broad middle of requests. 49.5% of combinations.
-- 65 and above, Full Relief: the only package that commits two trucks. With default stock it uses 40% of trucks and about 42% of packs, so it is reserved for the top 18.8% of combinations, where several severe factors combine.
+•         Below 20: only 83 of 1,536 possible input combinations (5.4%) fall here. The cut-off removes requests with almost no risk factors and nothing else.
 
-### 3.4 Reason for the fallback to a smaller package
+•         20 to 39.9, Emergency Kit: the smallest dispatch. Every dispatch needs at least one truck, so the truck is the minimum unit of response. 26.4% of combinations.
 
-- Stock is a hard limit. A request that earned Full Relief with stock for only Standard Relief still receives Standard Relief. Help arrives now instead of never.
-- Both trucks and packs are tested at every step, so the system finds the largest package the remaining stock can support. Stock is not left idle while an area waits.
-- Smaller packages stretch scarce stock over more areas.
-- The system never steps up. A larger package than the score earned would take stock from areas that have not yet reported.
-- The final failure is recorded as Deferred: not enough stock, separate from Defer / Monitor, so the operator can see a supply shortage as distinct from low need.
-- Stock is deducted only after a package is confirmed, so a failed attempt never leaves stock partly consumed.
+•         40 to 64.9, Standard Relief: covers the broad middle of requests. 49.5% of combinations.
 
-## 4. Results
+•         65 and above, Full Relief: the only package that commits two trucks. With default stock it uses 40% of trucks and about 42% of packs, so it is reserved for the top 18.8% of combinations, where several severe factors combine.
 
-### 4.1 Capacity of the default stock
+### 4.4 Reason for the fallback to a smaller package
+
+•         Stock is a hard limit. A request that earned Full Relief with stock for only Standard Relief still receives Standard Relief. Help arrives now instead of never.
+
+•         Both trucks and packs are tested at every step, so the system finds the largest package the remaining stock can support. Stock is not left idle while an area waits.
+
+•         Smaller packages stretch scarce stock over more areas.
+
+•         The system never steps up. A larger package than the score earned would take stock from areas that have not yet reported.
+
+•         The final failure is recorded as Deferred: not enough stock, separate from Defer / Monitor, so the operator can see a supply shortage as distinct from low need.
+
+•         Stock is deducted only after a package is confirmed, so a failed attempt never leaves stock partly consumed.
+
+## 5. Results
+
+### 5.1 Capacity of the default stock
 
 | Package | Limited by trucks | Limited by packs | Maximum dispatches |
 | --- | --- | --- | --- |
@@ -170,13 +221,18 @@ The point values are design judgements by the project team. They are not statist
 
 Trucks are the scarce resource for Emergency Kits. Packs are the scarce resource for Standard Relief.
 
-### 4.2 Verified behaviours of the scoring model
+### 5.2 Verified behaviors of the scoring model
 
-- Trapped people, with no prior aid, score at least 22.3. The request always earns at least an Emergency Kit.
-- Trapped people plus medical need score at least 34.8, or 24.8 with prior aid. The request always earns at least an Emergency Kit.
-- An aftershock warning alone lifts a request to at least 23.3, above the Defer / Monitor line.
-- A damaged road alone, with no other risk factor, scores 17.3. It does not trigger relief by itself.
-- Limit: trapped people alone, combined with prior aid received, Low damage and 10 families, score 12.3 and are deferred as Defer / Monitor.
+•         Trapped people, with no prior aid, score at least 22.3. The request always earns at least an Emergency Kit.
+
+•         Trapped people plus medical need score at least 34.8, or 24.8 with prior aid. The request always earns at least an Emergency Kit.
+
+•         An aftershock warning alone lifts a request to at least 23.3, above the Defer / Monitor line.
+
+•         A damaged road alone, with no other risk factor, scores 17.3. It does not trigger relief by itself.
+
+•         Limit: trapped people alone, combined with prior aid received, Low damage and 10 families, score 12.3 and are deferred as Defer / Monitor.
+
 
 ## Getting the project
 
