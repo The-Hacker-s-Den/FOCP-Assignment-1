@@ -268,3 +268,7 @@ The relevant source files are included in the repository. Please refer to the fi
     <img src="https://github.com/Hania1573.png?size=50" width="50" height="50" alt="Hania1573" style="border-radius: 50%; object-fit: cover;" />
   </a>
 </p>
+
+## AI Use Note
+
+AI was used for understanding assignment requirements, clarifying concepts, and researching ideas. The need-score approach was suggested by our group, while the province-based prediction feature was explored as an additional idea.
