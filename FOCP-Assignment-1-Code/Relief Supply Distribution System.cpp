@@ -10,12 +10,12 @@ request_handled, deferred = running counters
 The string variables hold the yes/n and cateogircal answers collected from the user*/
 
 int trucks = 5, supply_packs = 120, disaster = 0, families_affected = 0, deferred = 0, request_handled = 0;
-string damage_level, access_route, aftershocks, area, medical_need, trapped_ppl, vulnerable_grps, local_clinic, previous_aid_received, selected_package, earth_quake, disas_start, update_inventory, main_option, province;
+string damage_level, access_route, aftershocks, area, medical_need, trapped_ppl, vulnerable_grps, local_clinic, previous_aid_received, selected_package, earth_quake, disas_start, update_inventory, main_option, province, population_density;
 
 
 //Prints the welcome banner when the program starts
 int welcome() {
-	cout << "\033[36m"<<"\nHi!Welcome to the Relief Supply Distribution System!" << "\033[0m" << endl;
+	cout << "\033[36m" << "\nHi!Welcome to the Relief Supply Distribution System!" << "\033[0m" << endl;
 	return 0;
 }
 
@@ -73,7 +73,7 @@ int disasters() {
 		cout << "1. Earthquake" << endl;
 		cout << "\nPlease select a disaster by entering the corresponding number: ";
 	}
-		return 0;
+	return 0;
 }
 
 /* Handles the full earthquake relief overflow:
@@ -87,16 +87,16 @@ int earthquake() {
 	cout << "\n\033[36m" << "Earthquake Disaster Selected!" << "\033[0m" << endl;
 	cout << "\nDisaster Type: Earthquake" << endl;
 	cout << "Please enter the details of the earthquake disaster." << endl;
-	
+
 
 	cout << "\nIs there an Earthquake Relief Request?(Yes/No)\t: ";
 	cin >> earth_quake;
 
 	//Main loop: keep processing the relief requests until the user says no
 	while (earth_quake == "y" || earth_quake == "Y" || earth_quake == "yes" || earth_quake == "Yes") {
-		
+
 		//Collect request details (each with input validation loops)
-		cout << "\nEnter province\t\t\t\t\t: ";
+		cout << "\nEnter province\t\t\t\t: ";
 		cin >> province;
 		cout << "\nEnter name of area\t\t\t\t: ";
 		cin >> area;
@@ -105,9 +105,18 @@ int earthquake() {
 		cout << "Infrastructure Damage Level (\033[31mHigh,\033[33m Medium,\033[32m Low\033[0m) : ";
 		cin >> damage_level;
 		while (damage_level != "High" && damage_level != "Medium" && damage_level != "Low" && damage_level != "high" && damage_level != "low" && damage_level != "medium" && damage_level != "h" && damage_level != "m" && damage_level != "l" && damage_level != "H" && damage_level != "M" && damage_level != "L") {
-			cout << "Invalid input. Please enter (\033[31mHigh,\033[33m Medium,\033[0m \033[32mLow\033[0m)\t:" << endl;
-			cout << "Infrastructure Damage Level\t\t\t: ";
+			cout << "Invalid input. Please enter \033[31mHigh,\033[33m Medium\033[0m or\033[32m Low\033[0m." << endl;
+			cout << "Infrastructure Damage Level\t\t: ";
 			cin >> damage_level;
+		}
+
+		//Damage level: must be High/Medium/Low (various cases/abbreviations accepted
+		cout << "Population Density (\033[31mDense,\033[33m Moderate,\033[32m Sparse\033[0m) : ";
+		cin >> population_density;
+		while (population_density != "Dense" && population_density != "Moderate" && population_density != "Sparse" && population_density != "dense" && population_density != "moderate" && population_density != "sparse" && population_density != "d" && population_density != "m" && population_density != "s" && population_density != "D" && population_density != "M" && population_density != "S") {
+			cout << "Invalid input. Please enter \033[31mDense,\033[33m Moderate\033[0m or\033[32m Sparse\033[0m." << endl;
+			cout << "Population Density\t\t: ";
+			cin >> population_density;
 		}
 
 		//NUmber of families affect: must be within the allowed 10-200 range
@@ -115,7 +124,7 @@ int earthquake() {
 		cin >> families_affected;
 		while (families_affected < 10 || families_affected > 200) {
 			cout << "Invalid input. Please enter a value between 10 and 200." << endl;
-			cout << "Families Affected\t\t\t\t: ";
+			cout << "Families Affected\t\t: ";
 			cin >> families_affected;
 		}
 
@@ -125,7 +134,7 @@ int earthquake() {
 		cin >> access_route;
 		while (access_route != "yes" && access_route != "Yes" && access_route != "no" && access_route != "No" && access_route != "y" && access_route != "n" && access_route != "Y" && access_route != "N") {
 			cout << "Invalid input. Please enter yes or no." << endl;
-			cout << "Access Route Availability\t\t\t: ";
+			cout << "Access Route Availability:\t ";
 			cin >> access_route;
 		}
 
@@ -135,7 +144,7 @@ int earthquake() {
 		cin >> aftershocks;
 		while (aftershocks != "yes" && aftershocks != "Yes" && aftershocks != "No" && aftershocks != "no" && aftershocks != "y" && aftershocks != "n" && aftershocks != "Y" && aftershocks != "N") {
 			cout << "Invalid input. Please enter yes or no." << endl;
-			cout << "Aftershock Warning\t\t\t\t: ";
+			cout << "Aftershock Warning\t\t\t: ";
 			cin >> aftershocks;
 		}
 
@@ -144,7 +153,7 @@ int earthquake() {
 		cin >> medical_need;
 		while (medical_need != "yes" && medical_need != "Yes" && medical_need != "No" && medical_need != "no" && medical_need != "y" && medical_need != "n" && medical_need != "Y" && medical_need != "N") {
 			cout << "Invalid input. Please enter yes or no." << endl;
-			cout << "Medical Need\t\t\t\t\t: ";
+			cout << "Medical Need\t\t\t: ";
 			cin >> medical_need;
 		}
 
@@ -153,7 +162,7 @@ int earthquake() {
 		cin >> trapped_ppl;
 		while (trapped_ppl != "yes" && trapped_ppl != "Yes" && trapped_ppl != "No" && trapped_ppl != "no" && trapped_ppl != "y" && trapped_ppl != "n" && trapped_ppl != "Y" && trapped_ppl != "N") {
 			cout << "Invalid input. Please enter yes or no." << endl;
-			cout << "Trapped People\t\t\t\t\t: ";
+			cout << "Trapped People\t\t\t: ";
 			cin >> trapped_ppl;
 		}
 
@@ -171,7 +180,7 @@ int earthquake() {
 		cin >> local_clinic;
 		while (local_clinic != "yes" && local_clinic != "Yes" && local_clinic != "No" && local_clinic != "no" && local_clinic != "y" && local_clinic != "n" && local_clinic != "Y" && local_clinic != "N") {
 			cout << "Invalid input. Please enter yes or no." << endl;
-			cout << "Local Clinic Functional\t\t\t\t: ";
+			cout << "Local Clinic Functional\t\t\t: ";
 			cin >> local_clinic;
 		}
 
@@ -180,7 +189,7 @@ int earthquake() {
 		cin >> previous_aid_received;
 		while (previous_aid_received != "yes" && previous_aid_received != "Yes" && previous_aid_received != "No" && previous_aid_received != "no" && previous_aid_received != "y" && previous_aid_received != "n" && previous_aid_received != "Y" && previous_aid_received != "N") {
 			cout << "Invalid input. Please enter yes or no." << endl;
-			cout << "Previous Aid Received\t\t\t\t: ";
+			cout << "Previous Aid Received\t\t\t: ";
 			cin >> previous_aid_received;
 		}
 
@@ -272,8 +281,8 @@ int earthquake() {
 			else if (needscore >= 65)
 				level = 1; //full aid
 
-			/*Try to fulfill at the assigned level. 
-			If stock is insufficient, step down to a smaller relief level instead of 
+			/*Try to fulfill at the assigned level.
+			If stock is insufficient, step down to a smaller relief level instead of
 			refusing outright */
 			bool sent = false;
 			while (!sent && level <= 3) {
@@ -311,14 +320,14 @@ int earthquake() {
 		}
 
 		cout << "\033[0m"; // Reset terminal color
-		
+
 		//---Print result for this request---
-		cout << "\n\nRelief Given for "<<area<<": "<< action << endl;
+		cout << "\n\nRelief Given for " << area << ": " << action << endl;
 		cout << "\nTrucks Used: " << trucksused << " Supply Packs Used: " << packsused << endl;
-		cout << "Remaining stock: " << trucks << " trucks , " << supply_packs << " supply packs"<<endl;
+		cout << "Remaining stock: " << trucks << " trucks , " << supply_packs << " supply packs" << endl;
 
 		//Ask whether the program should predict people under the rubble based on the number of families affected
-		cout << "\nWould you like to predict the number of people trapped under the rubble based on the number of families affected? (Yes/No)\t: ";
+		cout << "\nWould you like to predict the number of people trapped under the rubble based on the number of families affected? (\033[32mYes\033[0m/\033[31mNo\033[0m)\t: ";
 		if (cin >> earth_quake && (earth_quake == "y" || earth_quake == "Y" || earth_quake == "yes" || earth_quake == "Yes")) {
 			if (province == "Sindh" || province == "sindh" || province == "SINDH") {
 				cout << "\nNote: In Sindh, the average family size is 5.6 people per family." << endl;
@@ -337,7 +346,9 @@ int earthquake() {
 				if (predicted_trapped < 0) {
 					predicted_trapped = 0; // Ensure predicted trapped people is not negative
 				}
-				cout << "\nPredicted number of people trapped under the rubble: " << predicted_trapped << endl;
+				cout << "\nThe terrain is mostly flat in Sindh, so the predicted number of people trapped under the rubble is likely to be 10% lower than in hilly or mountainous regions." << endl;
+				cout << "\nDanger level by low plains = Moderate" << endl;
+				cout << "\nPredicted number of people trapped under the rubble: " << predicted_trapped * 0.1 << endl;
 			}
 			else if (province == "Punjab" || province == "punjab" || province == "PUNJAB") {
 				cout << "\nNote: In Punjab, the average family size is 6.4 people per family." << endl;
@@ -356,7 +367,9 @@ int earthquake() {
 				if (predicted_trapped < 0) {
 					predicted_trapped = 0; // Ensure predicted trapped people is not negative
 				}
-				cout << "\nPredicted number of people trapped under the rubble: " << predicted_trapped << endl;
+				cout << "\nThe terrain is mostly flat Punjab, so the predicted number of people trapped under the rubble is likely to be 10% lower than in hilly or mountainous regions." << endl;
+				cout << "\nDanger level by high plains = Moderate" << endl;
+				cout << "\nPredicted number of people trapped under the rubble: " << predicted_trapped * 0.1 << endl;
 			}
 			else if (province == "Balochistan" || province == "balochistan" || province == "BALOCHISTAN") {
 				cout << "\nNote: In Balochistan, the average family size is 6.4 people per family." << endl;
@@ -375,9 +388,11 @@ int earthquake() {
 				if (predicted_trapped < 0) {
 					predicted_trapped = 0; // Ensure predicted trapped people is not negative
 				}
-				cout << "\nPredicted number of people trapped under the rubble: " << predicted_trapped << endl;
+				cout << "\nThe terrain is mountainious with plateaus in Balochistan, so the predicted number of people trapped under the rubble is likely to be 30% higher in hilly or mountainous regions." << endl;
+				cout << "\nDanger level = High" << endl;
+				cout << "\nPredicted number of people trapped under the rubble: " << predicted_trapped * 0.3 << endl;
 			}
-			else if (province == "Khyber-Pakhtunkhwa" || province == "khyber-pakhtunkhwa" || province == "KPK" || province == "kpk") {
+			else if (province == "Khyber Pakhtunkhwa" || province == "khyber pakhtunkhwa" || province == "KPK" || province == "kpk") {
 				cout << "\nNote: In Khyber Pakhtunkhwa, the average family size is 6.9 people per family." << endl;
 				float predicted_trapped = families_affected * 6.9; //Assuming an average of 6.9 people per family in Khyber Pakhtunkhwa
 				int unaffected_people = 0;
@@ -394,7 +409,9 @@ int earthquake() {
 				if (predicted_trapped < 0) {
 					predicted_trapped = 0; // Ensure predicted trapped people is not negative
 				}
-				cout << "\nPredicted number of people trapped under the rubble: " << predicted_trapped << endl;
+				cout << "\nThe terrain is mountainious in kpk, so the predicted number of people trapped under the rubble is likely to be 30% higher in hilly or mountainous regions." << endl;
+				cout << "\nDanger level = High" << endl;
+				cout << "\nPredicted number of people trapped under the rubble: " << predicted_trapped * 0.3 << endl;
 			}
 			else if (province == "Gilgit-Baltistan" || province == "gilgit-baltistan" || province == "GB" || province == "gb" || province == "Gilgit" || province == "Baltistan") {
 				cout << "\nNote: In Gilgit-Baltistan, the average family size is 7.3 people per family." << endl;
@@ -413,7 +430,9 @@ int earthquake() {
 				if (predicted_trapped < 0) {
 					predicted_trapped = 0; // Ensure predicted trapped people is not negative
 				}
-				cout << "\nPredicted number of people trapped under the rubble: " << predicted_trapped << endl;
+				cout << "\nThe terrain is mountainious with active tectonic plates in Gilgit, so the predicted number of people trapped under the rubble is likely to be 50% higher in hilly or mountainous regions." << endl;
+				cout << "\nDanger level = Very High" << endl;
+				cout << "\nPredicted number of people trapped under the rubble: " << predicted_trapped * 0.5 << endl;
 			}
 			else if (province == "Azad Jammu and Kashmir" || province == "azad jammu and kashmir" || province == "AJK" || province == "ajk") {
 				cout << "\nNote: In Azad Jammu and Kashmir, the average family size is 6.7 people per family." << endl;
@@ -432,7 +451,9 @@ int earthquake() {
 				if (predicted_trapped < 0) {
 					predicted_trapped = 0; // Ensure predicted trapped people is not negative
 				}
-				cout << "\nPredicted number of people trapped under the rubble: " << predicted_trapped << endl;
+				cout << "\nThe terrain is mountainious with active tectonic plates in AJK, so the predicted number of people trapped under the rubble is likely to be 50% higher in hilly or mountainous regions." << endl;
+				cout << "\nDanger level = Very High" << endl;
+				cout << "\nPredicted number of people trapped under the rubble: " << predicted_trapped * 0.5 << endl;
 			}
 			else if (province == "Islamabad" || province == "islamabad" || province == "ISB" || province == "isb") {
 				cout << "\nNote: In Islamabad, the average family size is 5.1 people per family." << endl;
@@ -451,7 +472,9 @@ int earthquake() {
 				if (predicted_trapped < 0) {
 					predicted_trapped = 0; // Ensure predicted trapped people is not negative
 				}
-				cout << "\nPredicted number of people trapped under the rubble: " << predicted_trapped << endl;
+				cout << "\nThe terrain is hilly near active tectonic plates in Islamabad, so the predicted number of people trapped under the rubble is likely to be 30% higher in hilly." << endl;
+				cout << "\nDanger level = High" << endl;
+				cout << "\nPredicted number of people trapped under the rubble: " << predicted_trapped * 0.3 << endl;
 			}
 			else {
 				cout << "\nProvince not recognized. Unable to predict the number of people trapped under the rubble." << endl;
@@ -466,7 +489,7 @@ int earthquake() {
 	}
 
 	//---END OF DISASTER SUMMARY--
-	cout << "\033[36m" << "\n--- SUMMARY OF THE EARTHQUAKE--- "<<"\033[0";
+	cout << "\033[36m" << "\n--- SUMMARY OF THE EARTHQUAKE--- " << "\033[0";
 	cout << "\033[32m" << "\nRequests served : " << request_handled << "\033[0m" << endl;
 	cout << "\033[31m" << "Requests deferred : " << deferred << "\033[0m" << endl;
 	cout << "Trucks remaining: " << trucks << endl;
@@ -509,6 +532,6 @@ int main() {
 			return 0;
 		}
 	}
-cout << "\nThank you for using the Relief Supply Distribution System." << endl;
-return 0;
+	cout << "\nThank you for using the Relief Supply Distribution System." << endl;
+	return 0;
 }
