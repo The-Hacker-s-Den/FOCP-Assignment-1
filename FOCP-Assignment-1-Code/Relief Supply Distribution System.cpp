@@ -110,7 +110,7 @@ int earthquake() {
 			cin >> damage_level;
 		}
 
-		//Damage level: must be High/Medium/Low (various cases/abbreviations accepted
+		//Population density: must be Dense/Moderate/Sparse (various cases/abbreviations accepted)
 		cout << "Population Density (\033[31mDense,\033[33m Moderate,\033[32m Sparse\033[0m) : ";
 		cin >> population_density;
 		while (population_density != "Dense" && population_density != "Moderate" && population_density != "Sparse" && population_density != "dense" && population_density != "moderate" && population_density != "sparse" && population_density != "d" && population_density != "m" && population_density != "s" && population_density != "D" && population_density != "M" && population_density != "S") {
@@ -119,7 +119,7 @@ int earthquake() {
 			cin >> population_density;
 		}
 
-		//NUmber of families affect: must be within the allowed 10-200 range
+		//Number of families affected: must be within the allowed 10-200 range
 		cout << "Families Affected (10-200)\t\t\t: ";
 		cin >> families_affected;
 		while (families_affected < 10 || families_affected > 200) {
@@ -348,7 +348,19 @@ int earthquake() {
 				}
 				cout << "\nThe terrain is mostly flat in Sindh, so the predicted number of people trapped under the rubble is likely to be 10% lower than in hilly or mountainous regions." << endl;
 				cout << "\nDanger level by low plains = Moderate" << endl;
-				cout << "\nPredicted number of people trapped under the rubble: " << predicted_trapped * 0.1 << endl;
+				cout << "Since population density is <<" << population_density << " the risk varies likewise." << endl;
+				if (population_density == "Dense" || population_density == "dense" || population_density == "D" || population_density == "d") {
+					cout << "\nDanger level by high population density = High" << endl;
+					cout << "\nPredicted number of people trapped under the rubble: " << predicted_trapped * 0.1 * 1.67 << endl;//(keeping moderate as baseline so dense is going to be five thirds of moderate)
+				}
+				else if (population_density == "Moderate" || population_density == "moderate" || population_density == "M" || population_density == "m") {
+					cout << "\nDanger level by moderate population density = Moderate" << endl;
+					cout << "\nPredicted number of people trapped under the rubble: " << predicted_trapped * 0.1 * 1.0 << endl;//(moderate is the standard baseline)
+				}
+				else if (population_density == "Sparse" || population_density == "sparse" || population_density == "S" || population_density == "s") {
+					cout << "\nDanger level by low population density = Low" << endl;
+					cout << "\nPredicted number of people trapped under the rubble: " << predicted_trapped * 0.1 * 0.33 << endl;//(keeping moderate as baseline so sparse is going to be 1/3 of moderate)
+				}
 			}
 			else if (province == "Punjab" || province == "punjab" || province == "PUNJAB") {
 				cout << "\nNote: In Punjab, the average family size is 6.4 people per family." << endl;
@@ -369,7 +381,18 @@ int earthquake() {
 				}
 				cout << "\nThe terrain is mostly flat Punjab, so the predicted number of people trapped under the rubble is likely to be 10% lower than in hilly or mountainous regions." << endl;
 				cout << "\nDanger level by high plains = Moderate" << endl;
-				cout << "\nPredicted number of people trapped under the rubble: " << predicted_trapped * 0.1 << endl;
+				if (population_density == "Dense" || population_density == "dense" || population_density == "D" || population_density == "d") {
+					cout << "\nDanger level by high population density = High" << endl;
+					cout << "\nPredicted number of people trapped under the rubble: " << predicted_trapped * 0.1 * 1.67 << endl;//(keeping moderate as baseline so dense is going to be five thirds of moderate)
+				}
+				else if (population_density == "Moderate" || population_density == "moderate" || population_density == "M" || population_density == "m") {
+					cout << "\nDanger level by moderate population density = Moderate" << endl;
+					cout << "\nPredicted number of people trapped under the rubble: " << predicted_trapped * 0.1 * 1.0 << endl;//(moderate is the standard baseline)
+				}
+				else if (population_density == "Sparse" || population_density == "sparse" || population_density == "S" || population_density == "s") {
+					cout << "\nDanger level by low population density = Low" << endl;
+					cout << "\nPredicted number of people trapped under the rubble: " << predicted_trapped * 0.1 * 0.33 << endl;//(keeping moderate as baseline so sparse is going to be 1/3 of moderate)
+				}
 			}
 			else if (province == "Balochistan" || province == "balochistan" || province == "BALOCHISTAN") {
 				cout << "\nNote: In Balochistan, the average family size is 6.4 people per family." << endl;
@@ -390,7 +413,18 @@ int earthquake() {
 				}
 				cout << "\nThe terrain is mountainious with plateaus in Balochistan, so the predicted number of people trapped under the rubble is likely to be 30% higher in hilly or mountainous regions." << endl;
 				cout << "\nDanger level = High" << endl;
-				cout << "\nPredicted number of people trapped under the rubble: " << predicted_trapped * 0.3 << endl;
+				if (population_density == "Dense" || population_density == "dense" || population_density == "D" || population_density == "d") {
+					cout << "\nDanger level by high population density = High" << endl;
+					cout << "\nPredicted number of people trapped under the rubble: " << predicted_trapped * 0.3 * 1.67 << endl;//(keeping moderate as baseline so dense is going to be five thirds of moderate)
+				}
+				else if (population_density == "Moderate" || population_density == "moderate" || population_density == "M" || population_density == "m") {
+					cout << "\nDanger level by moderate population density = Moderate" << endl;
+					cout << "\nPredicted number of people trapped under the rubble: " << predicted_trapped * 0.3 * 1.0 << endl;//(moderate is the standard baseline)
+				}
+				else if (population_density == "Sparse" || population_density == "sparse" || population_density == "S" || population_density == "s") {
+					cout << "\nDanger level by low population density = Low" << endl;
+					cout << "\nPredicted number of people trapped under the rubble: " << predicted_trapped * 0.3 * 0.33 << endl;//(keeping moderate as baseline so sparse is going to be 1/3 of moderate)
+				}
 			}
 			else if (province == "Khyber Pakhtunkhwa" || province == "khyber pakhtunkhwa" || province == "KPK" || province == "kpk") {
 				cout << "\nNote: In Khyber Pakhtunkhwa, the average family size is 6.9 people per family." << endl;
@@ -411,7 +445,18 @@ int earthquake() {
 				}
 				cout << "\nThe terrain is mountainious in kpk, so the predicted number of people trapped under the rubble is likely to be 30% higher in hilly or mountainous regions." << endl;
 				cout << "\nDanger level = High" << endl;
-				cout << "\nPredicted number of people trapped under the rubble: " << predicted_trapped * 0.3 << endl;
+				if (population_density == "Dense" || population_density == "dense" || population_density == "D" || population_density == "d") {
+					cout << "\nDanger level by high population density = High" << endl;
+					cout << "\nPredicted number of people trapped under the rubble: " << predicted_trapped * 0.3 * 1.67 << endl;//(keeping moderate as baseline so dense is going to be five thirds of moderate)
+				}
+				else if (population_density == "Moderate" || population_density == "moderate" || population_density == "M" || population_density == "m") {
+					cout << "\nDanger level by moderate population density = Moderate" << endl;
+					cout << "\nPredicted number of people trapped under the rubble: " << predicted_trapped * 0.3 * 1.0 << endl;//(moderate is the standard baseline)
+				}
+				else if (population_density == "Sparse" || population_density == "sparse" || population_density == "S" || population_density == "s") {
+					cout << "\nDanger level by low population density = Low" << endl;
+					cout << "\nPredicted number of people trapped under the rubble: " << predicted_trapped * 0.3 * 0.33 << endl;//(keeping moderate as baseline so sparse is going to be 1/3 of moderate)
+				}
 			}
 			else if (province == "Gilgit-Baltistan" || province == "gilgit-baltistan" || province == "GB" || province == "gb" || province == "Gilgit" || province == "Baltistan") {
 				cout << "\nNote: In Gilgit-Baltistan, the average family size is 7.3 people per family." << endl;
@@ -432,7 +477,18 @@ int earthquake() {
 				}
 				cout << "\nThe terrain is mountainious with active tectonic plates in Gilgit, so the predicted number of people trapped under the rubble is likely to be 50% higher in hilly or mountainous regions." << endl;
 				cout << "\nDanger level = Very High" << endl;
-				cout << "\nPredicted number of people trapped under the rubble: " << predicted_trapped * 0.5 << endl;
+				if (population_density == "Dense" || population_density == "dense" || population_density == "D" || population_density == "d") {
+					cout << "\nDanger level by high population density = High" << endl;
+					cout << "\nPredicted number of people trapped under the rubble: " << predicted_trapped * 0.5 * 1.67 << endl;//(keeping moderate as baseline so dense is going to be five thirds of moderate)
+				}
+				else if (population_density == "Moderate" || population_density == "moderate" || population_density == "M" || population_density == "m") {
+					cout << "\nDanger level by moderate population density = Moderate" << endl;
+					cout << "\nPredicted number of people trapped under the rubble: " << predicted_trapped * 0.5 * 1.0 << endl;//(moderate is the standard baseline)
+				}
+				else if (population_density == "Sparse" || population_density == "sparse" || population_density == "S" || population_density == "s") {
+					cout << "\nDanger level by low population density = Low" << endl;
+					cout << "\nPredicted number of people trapped under the rubble: " << predicted_trapped * 0.5 * 0.33 << endl;//(keeping moderate as baseline so sparse is going to be 1/3 of moderate)
+				}
 			}
 			else if (province == "Azad Jammu and Kashmir" || province == "azad jammu and kashmir" || province == "AJK" || province == "ajk") {
 				cout << "\nNote: In Azad Jammu and Kashmir, the average family size is 6.7 people per family." << endl;
@@ -453,7 +509,18 @@ int earthquake() {
 				}
 				cout << "\nThe terrain is mountainious with active tectonic plates in AJK, so the predicted number of people trapped under the rubble is likely to be 50% higher in hilly or mountainous regions." << endl;
 				cout << "\nDanger level = Very High" << endl;
-				cout << "\nPredicted number of people trapped under the rubble: " << predicted_trapped * 0.5 << endl;
+				if (population_density == "Dense" || population_density == "dense" || population_density == "D" || population_density == "d") {
+					cout << "\nDanger level by high population density = High" << endl;
+					cout << "\nPredicted number of people trapped under the rubble: " << predicted_trapped * 0.5 * 1.67 << endl;//(keeping moderate as baseline so dense is going to be five thirds of moderate)
+				}
+				else if (population_density == "Moderate" || population_density == "moderate" || population_density == "M" || population_density == "m") {
+					cout << "\nDanger level by moderate population density = Moderate" << endl;
+					cout << "\nPredicted number of people trapped under the rubble: " << predicted_trapped * 0.5 * 1.0 << endl;//(moderate is the standard baseline)
+				}
+				else if (population_density == "Sparse" || population_density == "sparse" || population_density == "S" || population_density == "s") {
+					cout << "\nDanger level by low population density = Low" << endl;
+					cout << "\nPredicted number of people trapped under the rubble: " << predicted_trapped * 0.5 * 0.33 << endl;//(keeping moderate as baseline so sparse is going to be 1/3 of moderate)
+				}
 			}
 			else if (province == "Islamabad" || province == "islamabad" || province == "ISB" || province == "isb") {
 				cout << "\nNote: In Islamabad, the average family size is 5.1 people per family." << endl;
@@ -474,7 +541,18 @@ int earthquake() {
 				}
 				cout << "\nThe terrain is hilly near active tectonic plates in Islamabad, so the predicted number of people trapped under the rubble is likely to be 30% higher in hilly." << endl;
 				cout << "\nDanger level = High" << endl;
-				cout << "\nPredicted number of people trapped under the rubble: " << predicted_trapped * 0.3 << endl;
+				if (population_density == "Dense" || population_density == "dense" || population_density == "D" || population_density == "d") {
+					cout << "\nDanger level by high population density = High" << endl;
+					cout << "\nPredicted number of people trapped under the rubble: " << predicted_trapped * 0.3 * 1.67 << endl;//(keeping moderate as baseline so dense is going to be five thirds of moderate)
+				}
+				else if (population_density == "Moderate" || population_density == "moderate" || population_density == "M" || population_density == "m") {
+					cout << "\nDanger level by moderate population density = Moderate" << endl;
+					cout << "\nPredicted number of people trapped under the rubble: " << predicted_trapped * 0.3 * 1.0 << endl;//(moderate is the standard baseline)
+				}
+				else if (population_density == "Sparse" || population_density == "sparse" || population_density == "S" || population_density == "s") {
+					cout << "\nDanger level by low population density = Low" << endl;
+					cout << "\nPredicted number of people trapped under the rubble: " << predicted_trapped * 0.3 * 0.33 << endl;//(keeping moderate as baseline so sparse is going to be 1/3 of moderate)
+				}
 			}
 			else {
 				cout << "\nProvince not recognized. Unable to predict the number of people trapped under the rubble." << endl;
