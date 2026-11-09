@@ -96,7 +96,7 @@ int earthquake() {
 	while (earth_quake == "y" || earth_quake == "Y" || earth_quake == "yes" || earth_quake == "Yes") {
 
 		//Collect request details (each with input validation loops)
-		cout << "\nEnter province\t\t\t\t: ";
+		cout << "\nEnter province\t\t\t\t\t: ";
 		cin >> province;
 		cout << "\nEnter name of area\t\t\t\t: ";
 		cin >> area;
@@ -105,8 +105,8 @@ int earthquake() {
 		cout << "Infrastructure Damage Level (\033[31mHigh,\033[33m Medium,\033[32m Low\033[0m) : ";
 		cin >> damage_level;
 		while (damage_level != "High" && damage_level != "Medium" && damage_level != "Low" && damage_level != "high" && damage_level != "low" && damage_level != "medium" && damage_level != "h" && damage_level != "m" && damage_level != "l" && damage_level != "H" && damage_level != "M" && damage_level != "L") {
-			cout << "Invalid input. Please enter \033[31mHigh,\033[33m Medium\033[0m or\033[32m Low\033[0m." << endl;
-			cout << "Infrastructure Damage Level\t\t: ";
+			cout << "Invalid input. Please enter (\033[31mHigh,\033[33m Medium,\033[0m or\033[32m Low\033[0m)\t:" << endl;
+			cout << "Infrastructure Damage Level\t\t\t: ";
 			cin >> damage_level;
 		}
 
@@ -124,7 +124,7 @@ int earthquake() {
 		cin >> families_affected;
 		while (families_affected < 10 || families_affected > 200) {
 			cout << "Invalid input. Please enter a value between 10 and 200." << endl;
-			cout << "Families Affected\t\t: ";
+			cout << "Families Affected\t\t\t\t: ";
 			cin >> families_affected;
 		}
 
@@ -134,7 +134,7 @@ int earthquake() {
 		cin >> access_route;
 		while (access_route != "yes" && access_route != "Yes" && access_route != "no" && access_route != "No" && access_route != "y" && access_route != "n" && access_route != "Y" && access_route != "N") {
 			cout << "Invalid input. Please enter yes or no." << endl;
-			cout << "Access Route Availability:\t ";
+			cout << "Access Route Availability:\t\t\t ";
 			cin >> access_route;
 		}
 
@@ -144,7 +144,7 @@ int earthquake() {
 		cin >> aftershocks;
 		while (aftershocks != "yes" && aftershocks != "Yes" && aftershocks != "No" && aftershocks != "no" && aftershocks != "y" && aftershocks != "n" && aftershocks != "Y" && aftershocks != "N") {
 			cout << "Invalid input. Please enter yes or no." << endl;
-			cout << "Aftershock Warning\t\t\t: ";
+			cout << "Aftershock Warning\t\t\t\t: ";
 			cin >> aftershocks;
 		}
 
@@ -153,7 +153,7 @@ int earthquake() {
 		cin >> medical_need;
 		while (medical_need != "yes" && medical_need != "Yes" && medical_need != "No" && medical_need != "no" && medical_need != "y" && medical_need != "n" && medical_need != "Y" && medical_need != "N") {
 			cout << "Invalid input. Please enter yes or no." << endl;
-			cout << "Medical Need\t\t\t: ";
+			cout << "Medical Need\t\t\t\t\t: ";
 			cin >> medical_need;
 		}
 
@@ -162,7 +162,7 @@ int earthquake() {
 		cin >> trapped_ppl;
 		while (trapped_ppl != "yes" && trapped_ppl != "Yes" && trapped_ppl != "No" && trapped_ppl != "no" && trapped_ppl != "y" && trapped_ppl != "n" && trapped_ppl != "Y" && trapped_ppl != "N") {
 			cout << "Invalid input. Please enter yes or no." << endl;
-			cout << "Trapped People\t\t\t: ";
+			cout << "Trapped People\t\t\t\t\t: ";
 			cin >> trapped_ppl;
 		}
 
@@ -180,7 +180,7 @@ int earthquake() {
 		cin >> local_clinic;
 		while (local_clinic != "yes" && local_clinic != "Yes" && local_clinic != "No" && local_clinic != "no" && local_clinic != "y" && local_clinic != "n" && local_clinic != "Y" && local_clinic != "N") {
 			cout << "Invalid input. Please enter yes or no." << endl;
-			cout << "Local Clinic Functional\t\t\t: ";
+			cout << "Local Clinic Functional\t\t\t\t: ";
 			cin >> local_clinic;
 		}
 
@@ -189,7 +189,7 @@ int earthquake() {
 		cin >> previous_aid_received;
 		while (previous_aid_received != "yes" && previous_aid_received != "Yes" && previous_aid_received != "No" && previous_aid_received != "no" && previous_aid_received != "y" && previous_aid_received != "n" && previous_aid_received != "Y" && previous_aid_received != "N") {
 			cout << "Invalid input. Please enter yes or no." << endl;
-			cout << "Previous Aid Received\t\t\t: ";
+			cout << "Previous Aid Received\t\t\t\t: ";
 			cin >> previous_aid_received;
 		}
 
@@ -426,7 +426,7 @@ int earthquake() {
 					cout << "\nPredicted number of people trapped under the rubble: " << predicted_trapped * 0.3 * 0.33 << endl;//(keeping moderate as baseline so sparse is going to be 1/3 of moderate)
 				}
 			}
-			else if (province == "Khyber Pakhtunkhwa" || province == "khyber pakhtunkhwa" || province == "KPK" || province == "kpk") {
+			else if (province == "Khyber-Pakhtunkhwa" || province == "khyber-pakhtunkhwa" || province == "KPK" || province == "kpk" || province == "Khyber" || province == "khyber") {
 				cout << "\nNote: In Khyber Pakhtunkhwa, the average family size is 6.9 people per family." << endl;
 				float predicted_trapped = families_affected * 6.9; //Assuming an average of 6.9 people per family in Khyber Pakhtunkhwa
 				int unaffected_people = 0;
